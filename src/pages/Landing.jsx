@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom'
 import { IMPACT_STATS } from '../data/mockData'
-import ImpactDashboard from '../components/ImpactDashboard'
 
 const steps = [
   { n:'1', icon:'📷', title:'Scannez', desc:"Pointez la caméra vers le code-barre de n'importe quel poisson en supermarché." },
@@ -51,10 +50,11 @@ export default function Landing() {
             </div>
           </div>
 
-          <div className="grid grid-cols-3 gap-3 mt-6 lg:mt-0">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-6 lg:mt-0">
             {[
               { n: IMPACT_STATS.scans.toLocaleString('fr'), l:'scans' },
               { n: IMPACT_STATS.artisans, l:'artisans' },
+              { n: `${IMPACT_STATS.kg_saved.toLocaleString('fr')} kg`, l:'surpêche évitée' },
               { n: IMPACT_STATS.users.toLocaleString('fr'), l:'utilisateurs' },
             ].map(s => (
               <div key={s.l} className="bg-white rounded-xl p-3 text-center border border-gray-100">
@@ -64,13 +64,6 @@ export default function Landing() {
             ))}
           </div>
         </div>
-      </section>
-
-      <section className="px-5 py-2 lg:px-8">
-        <ImpactDashboard
-          title="Dashboard d'impact"
-          subtitle="Compteurs animés pour la soutenance MaréeForce"
-        />
       </section>
 
       <section className="px-5 py-6 lg:px-8">

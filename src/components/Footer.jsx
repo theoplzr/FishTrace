@@ -26,12 +26,6 @@ export default function Footer() {
           <Link to="/mission" className="rounded-xl bg-gray-50 px-3 py-2 text-gray-700">Notre mission</Link>
           <Link to="/abonnement" className="rounded-xl bg-gray-50 px-3 py-2 text-gray-700">Abonnement</Link>
         </div>
-
-        <div className="text-xs text-gray-400 leading-relaxed">
-          Projet scolaire CESI Nancy · Bloc Innovation · FISA INFO A4 2025–2026.
-          <br />
-          Démo PWA prête pour l'ajout à l'écran d'accueil.
-        </div>
       </div>
     </footer>
   )
