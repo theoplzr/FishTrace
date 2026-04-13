@@ -55,7 +55,7 @@ export default function Landing() {
               { n: IMPACT_STATS.scans.toLocaleString('fr'), l:'scans' },
               { n: IMPACT_STATS.artisans, l:'artisans' },
               { n: `${IMPACT_STATS.kg_saved.toLocaleString('fr')} kg`, l:'surpêche évitée' },
-              { n: IMPACT_STATS.users.toLocaleString('fr'), l:'utilisateurs' },
+              { n: IMPACT_STATS.users.toLocaleString('fr'), l:'consommateurs engagés' },
             ].map(s => (
               <div key={s.l} className="bg-white rounded-xl p-3 text-center border border-gray-100">
                 <div className="text-lg font-bold" style={{color:'#1D9E75'}}>{s.n}</div>
