@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { IMPACT_STATS } from '../data/mockData'
+import ImpactDashboard from '../components/ImpactDashboard'
 
 const steps = [
   { n:'1', icon:'📷', title:'Scannez', desc:"Pointez la caméra vers le code-barre de n'importe quel poisson en supermarché." },
@@ -20,17 +21,14 @@ const stats = [
   { value:'4×', label:'plus de poisson importé que produit en France', source:'FranceAgriMer, 2023' },
 ]
 
-function AnimatedCounter({ value }) {
-  return <span className="text-3xl font-bold" style={{color:'#0F6E56'}}>{value}</span>
-}
-
 export default function Landing() {
   return (
     <div className="flex flex-col">
 
       {/* ── HERO ── */}
       <section className="px-5 pt-8 pb-6" style={{background:'linear-gradient(180deg, #E1F5EE 0%, #f9fafb 100%)'}}>
-        <div className="mb-2">
+        <div className="mb-2 flex items-center gap-3">
+          <img src="/brand-mark.svg" alt="FishTrace" className="w-12 h-12 rounded-2xl shadow-sm" />
           <span className="text-xs font-semibold px-3 py-1 rounded-full text-white" style={{backgroundColor:'#1D9E75'}}>
             🌊 Bloc Innovation · CESI FISA INFO A4
           </span>
@@ -40,6 +38,9 @@ export default function Landing() {
           <span style={{color:'#1D9E75'}}>Choisissez.</span><br />
           Agissez.
         </h1>
+        <p className="text-sm font-semibold mt-3" style={{color:'#0F6E56'}}>
+          Scannez la mer. Soutenez les artisans.
+        </p>
         <p className="text-gray-500 mt-3 text-sm leading-relaxed">
           FishTrace analyse la durabilité de votre poisson en 2 secondes et vous connecte directement aux pêcheurs artisanaux de votre région.
         </p>
@@ -47,8 +48,8 @@ export default function Landing() {
           <Link to="/scan" className="btn-primary text-center">
             📷 Scanner un poisson
           </Link>
-          <Link to="/abonnement" className="btn-secondary text-center">
-            Voir les offres — dès 0€
+          <Link to="/mission" className="btn-secondary text-center">
+            Découvrir la mission
           </Link>
         </div>
         {/* Mini stats */}
@@ -64,6 +65,13 @@ export default function Landing() {
             </div>
           ))}
         </div>
+      </section>
+
+      <section className="px-5 py-2">
+        <ImpactDashboard
+          title="Dashboard d'impact"
+          subtitle="Compteurs animés pour la soutenance MaréeForce"
+        />
       </section>
 
       {/* ── COMMENT ÇA MARCHE ── */}
@@ -145,9 +153,14 @@ export default function Landing() {
         <div className="text-2xl mb-2">🐟</div>
         <h3 className="font-bold text-white text-base mb-1">Accédez aux alternatives durables</h3>
         <p className="text-xs mb-4" style={{color:'#9FE1CB'}}>4€/mois · Sans engagement · Annulation à tout moment</p>
-        <Link to="/abonnement" className="inline-block bg-white font-semibold text-sm px-6 py-2.5 rounded-xl transition-colors hover:bg-gray-100" style={{color:'#0F6E56'}}>
-          Voir les offres →
-        </Link>
+        <div className="flex flex-col gap-3">
+          <Link to="/abonnement" className="inline-block bg-white font-semibold text-sm px-6 py-2.5 rounded-xl transition-colors hover:bg-gray-100" style={{color:'#0F6E56'}}>
+            Voir les offres →
+          </Link>
+          <Link to="/historique" className="inline-block text-sm font-semibold px-6 py-2.5 rounded-xl border border-white/15 text-white">
+            Voir l'historique local
+          </Link>
+        </div>
       </section>
 
     </div>

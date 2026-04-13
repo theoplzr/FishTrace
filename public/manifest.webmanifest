@@ -1,0 +1,17 @@
+{
+  "name": "FishTrace by MaréeForce",
+  "short_name": "FishTrace",
+  "description": "Scannez la mer. Soutenez les artisans.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f8fafc",
+  "theme_color": "#0F6E56",
+  "icons": [
+    {
+      "src": "/brand-mark.svg",
+      "sizes": "256x256",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
