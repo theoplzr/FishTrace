@@ -29,9 +29,6 @@ export default function Landing() {
           <div>
             <div className="mb-2 flex flex-wrap items-center gap-3">
               <img src="/brand-mark.svg" alt="FishTrace" className="w-12 h-12 rounded-2xl shadow-sm" />
-              <span className="text-xs font-semibold px-3 py-1 rounded-full text-white" style={{backgroundColor:'#1D9E75'}}>
-                🌊 Bloc Innovation · CESI FISA INFO A4
-              </span>
             </div>
             <h1 className="text-3xl lg:text-5xl font-bold text-gray-900 mt-3 leading-tight">
               Scannez.<br />
