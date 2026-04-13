@@ -24,60 +24,61 @@ const stats = [
 export default function Landing() {
   return (
     <div className="flex flex-col">
-
-      {/* ── HERO ── */}
-      <section className="px-5 pt-8 pb-6" style={{background:'linear-gradient(180deg, #E1F5EE 0%, #f9fafb 100%)'}}>
-        <div className="mb-2 flex items-center gap-3">
-          <img src="/brand-mark.svg" alt="FishTrace" className="w-12 h-12 rounded-2xl shadow-sm" />
-          <span className="text-xs font-semibold px-3 py-1 rounded-full text-white" style={{backgroundColor:'#1D9E75'}}>
-            🌊 Bloc Innovation · CESI FISA INFO A4
-          </span>
-        </div>
-        <h1 className="text-3xl font-bold text-gray-900 mt-3 leading-tight">
-          Scannez.<br />
-          <span style={{color:'#1D9E75'}}>Choisissez.</span><br />
-          Agissez.
-        </h1>
-        <p className="text-sm font-semibold mt-3" style={{color:'#0F6E56'}}>
-          Scannez la mer. Soutenez les artisans.
-        </p>
-        <p className="text-gray-500 mt-3 text-sm leading-relaxed">
-          FishTrace analyse la durabilité de votre poisson en 2 secondes et vous connecte directement aux pêcheurs artisanaux de votre région.
-        </p>
-        <div className="flex flex-col gap-3 mt-6">
-          <Link to="/scan" className="btn-primary text-center">
-            📷 Scanner un poisson
-          </Link>
-          <Link to="/mission" className="btn-secondary text-center">
-            Découvrir la mission
-          </Link>
-        </div>
-        {/* Mini stats */}
-        <div className="flex gap-3 mt-5">
-          {[
-            { n: IMPACT_STATS.scans.toLocaleString('fr'), l:'scans' },
-            { n: IMPACT_STATS.artisans,                   l:'artisans' },
-            { n: IMPACT_STATS.users.toLocaleString('fr'), l:'utilisateurs' },
-          ].map(s => (
-            <div key={s.l} className="flex-1 bg-white rounded-xl p-3 text-center border border-gray-100">
-              <div className="text-lg font-bold" style={{color:'#1D9E75'}}>{s.n}</div>
-              <div className="text-xs text-gray-400">{s.l}</div>
+      <section className="px-5 pt-8 pb-6 lg:px-8 lg:pt-10 lg:pb-8" style={{background:'linear-gradient(180deg, #E1F5EE 0%, #f9fafb 100%)'}}>
+        <div className="lg:grid lg:grid-cols-[minmax(0,1.2fr)_360px] lg:gap-8 lg:items-center">
+          <div>
+            <div className="mb-2 flex flex-wrap items-center gap-3">
+              <img src="/brand-mark.svg" alt="FishTrace" className="w-12 h-12 rounded-2xl shadow-sm" />
+              <span className="text-xs font-semibold px-3 py-1 rounded-full text-white" style={{backgroundColor:'#1D9E75'}}>
+                🌊 Bloc Innovation · CESI FISA INFO A4
+              </span>
             </div>
-          ))}
+            <h1 className="text-3xl lg:text-5xl font-bold text-gray-900 mt-3 leading-tight">
+              Scannez.<br />
+              <span style={{color:'#1D9E75'}}>Choisissez.</span><br />
+              Agissez.
+            </h1>
+            <p className="text-sm lg:text-base font-semibold mt-3" style={{color:'#0F6E56'}}>
+              Scannez la mer. Soutenez les artisans.
+            </p>
+            <p className="text-gray-500 mt-3 text-sm lg:text-base leading-relaxed max-w-2xl">
+              FishTrace analyse la durabilité de votre poisson en 2 secondes et vous connecte directement aux pêcheurs artisanaux de votre région.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3 mt-6">
+              <Link to="/scan" className="btn-primary text-center sm:w-auto">
+                📷 Scanner un poisson
+              </Link>
+              <Link to="/mission" className="btn-secondary text-center sm:w-auto">
+                Découvrir la mission
+              </Link>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-3 gap-3 mt-6 lg:mt-0">
+            {[
+              { n: IMPACT_STATS.scans.toLocaleString('fr'), l:'scans' },
+              { n: IMPACT_STATS.artisans, l:'artisans' },
+              { n: IMPACT_STATS.users.toLocaleString('fr'), l:'utilisateurs' },
+            ].map(s => (
+              <div key={s.l} className="bg-white rounded-xl p-3 text-center border border-gray-100">
+                <div className="text-lg font-bold" style={{color:'#1D9E75'}}>{s.n}</div>
+                <div className="text-xs text-gray-400">{s.l}</div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
-      <section className="px-5 py-2">
+      <section className="px-5 py-2 lg:px-8">
         <ImpactDashboard
           title="Dashboard d'impact"
           subtitle="Compteurs animés pour la soutenance MaréeForce"
         />
       </section>
 
-      {/* ── COMMENT ÇA MARCHE ── */}
-      <section className="px-5 py-6">
+      <section className="px-5 py-6 lg:px-8">
         <h2 className="text-lg font-bold text-gray-900 mb-4">Comment ça marche ?</h2>
-        <div className="flex flex-col gap-3">
+        <div className="grid gap-3 md:grid-cols-3">
           {steps.map(s => (
             <div key={s.n} className="card flex gap-4 items-start">
               <div className="w-9 h-9 rounded-full flex items-center justify-center text-white text-sm font-bold flex-shrink-0" style={{backgroundColor:'#1D9E75'}}>
@@ -90,16 +91,15 @@ export default function Landing() {
             </div>
           ))}
         </div>
-        <Link to="/scan" className="btn-primary mt-4 text-center">
+        <Link to="/scan" className="btn-primary mt-4 text-center md:w-auto">
           Essayer maintenant →
         </Link>
       </section>
 
-      {/* ── CHIFFRES CHOCS ── */}
-      <section className="px-5 py-6" style={{backgroundColor:'#0F6E56'}}>
+      <section className="px-5 py-6 lg:px-8" style={{backgroundColor:'#0F6E56'}}>
         <h2 className="text-lg font-bold text-white mb-1">La crise, en chiffres</h2>
         <p className="text-xs mb-4" style={{color:'#9FE1CB'}}>La pêche industrielle détruit l'artisanat français</p>
-        <div className="grid grid-cols-2 gap-3">
+        <div className="grid grid-cols-2 xl:grid-cols-4 gap-3">
           {stats.map(s => (
             <div key={s.value} className="rounded-2xl p-3" style={{backgroundColor:'rgba(255,255,255,0.1)'}}>
               <div className="text-2xl font-bold text-white">{s.value}</div>
@@ -110,11 +110,10 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* ── 3 PILIERS MARÉEFORCE ── */}
-      <section className="px-5 py-6">
+      <section className="px-5 py-6 lg:px-8">
         <h2 className="text-lg font-bold text-gray-900 mb-1">MaréeForce en 3 piliers</h2>
         <p className="text-xs text-gray-400 mb-4">L'unique agence d'impact à approche intégrée</p>
-        <div className="flex flex-col gap-3">
+        <div className="grid gap-3 lg:grid-cols-3">
           {pillars.map(p => (
             <div key={p.title} className="card flex gap-3 items-start">
               <div className="w-10 h-10 rounded-xl flex items-center justify-center text-lg flex-shrink-0" style={{backgroundColor:p.color}}>
@@ -129,37 +128,39 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* ── TÉMOIGNAGE MARCO ── */}
-      <section className="mx-5 mb-6 rounded-2xl p-5" style={{backgroundColor:'#E1F5EE', borderLeft:'4px solid #1D9E75'}}>
-        <div className="flex items-center gap-3 mb-3">
-          <div className="w-12 h-12 rounded-full flex items-center justify-center text-2xl" style={{backgroundColor:'#9FE1CB'}}>
-            🎣
+      <section className="px-5 pb-6 lg:px-8">
+        <div className="grid gap-4 lg:grid-cols-2">
+          <div className="rounded-2xl p-5" style={{backgroundColor:'#E1F5EE', borderLeft:'4px solid #1D9E75'}}>
+            <div className="flex items-center gap-3 mb-3">
+              <div className="w-12 h-12 rounded-full flex items-center justify-center text-2xl" style={{backgroundColor:'#9FE1CB'}}>
+                🎣
+              </div>
+              <div>
+                <div className="font-semibold text-sm" style={{color:'#085041'}}>Marco Ferreira</div>
+                <div className="text-xs" style={{color:'#1D9E75'}}>Pêcheur artisan · Douarnenez, Bretagne</div>
+              </div>
+            </div>
+            <p className="text-sm italic leading-relaxed" style={{color:'#085041'}}>
+              "Avant FishTrace, je bradais mon poisson à des grossistes. Maintenant mes clients savent exactement d'où il vient, et mes revenus ont augmenté de <strong>+34%</strong>."
+            </p>
+            <Link to="/pecheur/marco-ferreira" className="text-xs font-semibold mt-3 block" style={{color:'#1D9E75'}}>
+              Voir son profil →
+            </Link>
           </div>
-          <div>
-            <div className="font-semibold text-sm" style={{color:'#085041'}}>Marco Ferreira</div>
-            <div className="text-xs" style={{color:'#1D9E75'}}>Pêcheur artisan · Douarnenez, Bretagne</div>
-          </div>
-        </div>
-        <p className="text-sm italic leading-relaxed" style={{color:'#085041'}}>
-          "Avant FishTrace, je bradais mon poisson à des grossistes. Maintenant mes clients savent exactement d'où il vient, et mes revenus ont augmenté de <strong>+34%</strong>."
-        </p>
-        <Link to="/pecheur/marco-ferreira" className="text-xs font-semibold mt-3 block" style={{color:'#1D9E75'}}>
-          Voir son profil →
-        </Link>
-      </section>
 
-      {/* ── CTA ABONNEMENT ── */}
-      <section className="mx-5 mb-6 rounded-2xl p-5 text-center" style={{backgroundColor:'#085041'}}>
-        <div className="text-2xl mb-2">🐟</div>
-        <h3 className="font-bold text-white text-base mb-1">Accédez aux alternatives durables</h3>
-        <p className="text-xs mb-4" style={{color:'#9FE1CB'}}>4€/mois · Sans engagement · Annulation à tout moment</p>
-        <div className="flex flex-col gap-3">
-          <Link to="/abonnement" className="inline-block bg-white font-semibold text-sm px-6 py-2.5 rounded-xl transition-colors hover:bg-gray-100" style={{color:'#0F6E56'}}>
-            Voir les offres →
-          </Link>
-          <Link to="/historique" className="inline-block text-sm font-semibold px-6 py-2.5 rounded-xl border border-white/15 text-white">
-            Voir l'historique local
-          </Link>
+          <div className="rounded-2xl p-5 text-center" style={{backgroundColor:'#085041'}}>
+            <div className="text-2xl mb-2">🐟</div>
+            <h3 className="font-bold text-white text-base mb-1">Accédez aux alternatives durables</h3>
+            <p className="text-xs mb-4" style={{color:'#9FE1CB'}}>4€/mois · Sans engagement · Annulation à tout moment</p>
+            <div className="flex flex-col sm:flex-row lg:flex-col gap-3">
+              <Link to="/abonnement" className="inline-block bg-white font-semibold text-sm px-6 py-2.5 rounded-xl transition-colors hover:bg-gray-100 sm:w-auto" style={{color:'#0F6E56'}}>
+                Voir les offres →
+              </Link>
+              <Link to="/historique" className="inline-block text-sm font-semibold px-6 py-2.5 rounded-xl border border-white/15 text-white sm:w-auto">
+                Voir l'historique local
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
 

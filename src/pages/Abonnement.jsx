@@ -27,7 +27,7 @@ export default function Abonnement() {
 
   return (
     <div className="flex flex-col gap-0 pb-6">
-      <div className="px-4 pt-6 pb-5 text-center" style={{ backgroundColor: '#E1F5EE' }}>
+      <div className="px-4 pt-6 pb-5 text-center sm:px-6 lg:px-8" style={{ backgroundColor: '#E1F5EE' }}>
         <div className="text-xs font-semibold uppercase tracking-[0.16em]" style={{ color: '#1D9E75' }}>
           Plans FishTrace
         </div>
@@ -58,7 +58,7 @@ export default function Abonnement() {
         </div>
       )}
 
-      <div className="flex flex-col gap-4 px-4 pt-5">
+      <div className="grid gap-4 px-4 pt-5 sm:px-6 lg:px-8 xl:grid-cols-3 xl:items-start">
         {PLANS.map(plan => {
           const isActive = tier === plan.id
 
@@ -131,14 +131,12 @@ export default function Abonnement() {
         })}
       </div>
 
-      <div className="mx-4 mt-4">
+      <div className="px-4 mt-4 sm:px-6 lg:px-8 grid gap-4 xl:grid-cols-2 xl:items-start">
         <ImpactDashboard
           title="Dashboard impact"
           subtitle="Compteurs animés pour matérialiser la traction projetée en soutenance"
         />
-      </div>
 
-      <div className="mx-4 mt-4">
         <ProQrGenerator
           fishermanName="Marco Ferreira"
           productName="Maquereau de ligne"
@@ -148,9 +146,9 @@ export default function Abonnement() {
         />
       </div>
 
-      <div className="px-4 mt-5">
+      <div className="px-4 mt-5 sm:px-6 lg:px-8">
         <h2 className="font-bold text-gray-900 text-base mb-3">Questions fréquentes</h2>
-        <div className="flex flex-col gap-2">
+        <div className="grid gap-2 lg:grid-cols-2">
           {FAQ.map((item, index) => (
             <div key={index} className="card cursor-pointer" onClick={() => setOpenFaq(openFaq === index ? null : index)}>
               <div className="flex items-center justify-between">
@@ -165,7 +163,7 @@ export default function Abonnement() {
         </div>
       </div>
 
-      <div className="mx-4 mt-5 p-4 rounded-2xl bg-gray-100 text-center">
+      <div className="mx-4 mt-5 p-4 rounded-2xl bg-gray-100 text-center sm:mx-6 lg:mx-8">
         <p className="text-xs text-gray-400 leading-relaxed">
           FishTrace est la brique citoyenne de MaréeForce : plaidoyer, circuit court et preuve de traçabilité.
           <br />
@@ -173,8 +171,8 @@ export default function Abonnement() {
         </p>
       </div>
 
-      <div className="px-4 mt-5">
-        <Link to="/mission" className="btn-secondary">Voir la mission MaréeForce</Link>
+      <div className="px-4 mt-5 sm:px-6 lg:px-8">
+        <Link to="/mission" className="btn-secondary md:w-auto">Voir la mission MaréeForce</Link>
       </div>
     </div>
   )

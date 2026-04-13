@@ -131,8 +131,8 @@ export default function Scanner() {
   }, [guidedDemoActive, guidedStepIndex, scanning])
 
   return (
-    <div className="flex flex-col min-h-screen bg-black">
-      <div className="relative flex-1 flex items-center justify-center overflow-hidden" style={{ minHeight: '60vh' }}>
+    <div className="bg-black lg:my-6 lg:grid lg:min-h-[720px] lg:grid-cols-[minmax(0,1.25fr)_minmax(360px,0.75fr)] lg:overflow-hidden lg:rounded-[32px]">
+      <div className="relative flex-1 flex items-center justify-center overflow-hidden min-h-[55vh] lg:min-h-[720px]">
         {cameraActive && (
           <video ref={videoRef} autoPlay playsInline muted className="w-full h-full object-cover absolute inset-0" />
         )}
@@ -182,8 +182,8 @@ export default function Scanner() {
         </div>
       </div>
 
-      <div className="bg-white rounded-t-3xl p-5 shadow-2xl">
-        <div className="w-10 h-1 bg-gray-200 rounded-full mx-auto mb-4" />
+      <div className="bg-white rounded-t-3xl p-5 shadow-2xl lg:rounded-none lg:flex lg:flex-col lg:justify-center lg:px-8">
+        <div className="w-10 h-1 bg-gray-200 rounded-full mx-auto mb-4 lg:hidden" />
 
         {!scanning && !guidedDemoActive && !showManualDemo && (
           <>
@@ -191,11 +191,11 @@ export default function Scanner() {
             <p className="text-xs text-gray-400 mb-4">
               Démo soutenance disponible avec le storyboard de Théo Lemaire.
             </p>
-            <div className="flex flex-col gap-3">
-              <button onClick={startGuidedDemo} className="btn-primary">
+            <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">
+              <button onClick={startGuidedDemo} className="btn-primary sm:w-auto lg:w-full">
                 🎬 Lancer la démo guidée Théo
               </button>
-              <button onClick={() => { stopDemo(); setShowManualDemo(true) }} className="btn-secondary">
+              <button onClick={() => { stopDemo(); setShowManualDemo(true) }} className="btn-secondary sm:w-auto lg:w-full">
                 Choisir un produit de démonstration
               </button>
             </div>
@@ -239,7 +239,7 @@ export default function Scanner() {
         {!scanning && showManualDemo && (
           <>
             <h2 className="font-bold text-gray-900 text-base mb-3">Choisir un produit à scanner</h2>
-            <div className="flex flex-col gap-2">
+            <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-1">
               {DEMO_PRODUCTS.map(product => (
                 <button
                   key={product.id}
@@ -256,10 +256,10 @@ export default function Scanner() {
                   </div>
                 </button>
               ))}
-              <button onClick={() => setShowManualDemo(false)} className="text-sm text-gray-400 mt-1 hover:text-gray-600">
-                ← Retour
-              </button>
             </div>
+            <button onClick={() => setShowManualDemo(false)} className="text-sm text-gray-400 mt-3 hover:text-gray-600">
+              ← Retour
+            </button>
           </>
         )}
 

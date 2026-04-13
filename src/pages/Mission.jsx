@@ -42,7 +42,7 @@ const OUTCOMES = [
 
 export default function Mission() {
   return (
-    <div className="flex flex-col gap-5 px-4 pt-5 pb-2">
+    <div className="flex flex-col gap-5 px-4 pt-5 pb-2 sm:px-6 lg:px-8">
       <section className="rounded-[28px] p-5" style={{ background: 'linear-gradient(180deg, #E1F5EE 0%, #ffffff 100%)' }}>
         <div className="text-xs font-semibold uppercase tracking-[0.16em]" style={{ color: '#1D9E75' }}>
           Notre mission
@@ -55,7 +55,7 @@ export default function Mission() {
         </p>
       </section>
 
-      <section className="flex flex-col gap-3">
+      <section className="grid gap-3 lg:grid-cols-3">
         {PILLARS.map(pillar => (
           <div key={pillar.title} className="card flex gap-3 items-start">
             <div className="w-11 h-11 rounded-2xl flex items-center justify-center text-xl flex-shrink-0" style={{ backgroundColor: pillar.color }}>
@@ -76,7 +76,7 @@ export default function Mission() {
 
       <section className="card">
         <h2 className="font-semibold text-base text-gray-900">Ce que MaréeForce change</h2>
-        <div className="flex flex-col gap-3 mt-4">
+        <div className="grid gap-3 lg:grid-cols-3 mt-4">
           {OUTCOMES.map(outcome => (
             <div key={outcome.title} className="rounded-2xl p-4 bg-gray-50">
               <div className="font-semibold text-sm text-gray-900">{outcome.title}</div>
@@ -92,9 +92,9 @@ export default function Mission() {
         <p className="text-sm mt-2 leading-relaxed" style={{ color: '#9FE1CB' }}>
           Scan, score, alternatives, preuve de traçabilité: le produit doit raconter une histoire crédible en moins de 10 secondes.
         </p>
-        <div className="flex flex-col gap-3 mt-5">
-          <Link to="/scan" className="btn-primary">Lancer un scan</Link>
-          <Link to="/abonnement" className="btn-secondary bg-white/5 border-white/20 text-white hover:bg-white/10">
+        <div className="flex flex-col sm:flex-row gap-3 mt-5">
+          <Link to="/scan" className="btn-primary sm:w-auto">Lancer un scan</Link>
+          <Link to="/abonnement" className="btn-secondary bg-white/5 border-white/20 text-white hover:bg-white/10 sm:w-auto">
             Voir les plans
           </Link>
         </div>

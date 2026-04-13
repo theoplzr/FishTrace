@@ -8,7 +8,7 @@ export default function Navbar() {
 
   return (
     <nav className="bg-white border-b border-gray-100 sticky top-0 z-50">
-      <div className="flex items-center justify-between px-4 py-3">
+      <div className="site-shell flex items-center justify-between gap-4 py-3">
         <Link to="/" className="flex items-center gap-2">
           <img src="/brand-mark.svg" alt="FishTrace" className="w-9 h-9 rounded-xl" />
           <div>
@@ -16,7 +16,7 @@ export default function Navbar() {
             <div className="text-gray-400 text-[11px] leading-tight hidden sm:block">by MaréeForce · Scannez la mer.</div>
           </div>
         </Link>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 flex-wrap justify-end">
           <Link to="/historique" className="text-gray-500 text-xs font-semibold px-3 py-2 rounded-xl border border-gray-200">
             🕘
           </Link>

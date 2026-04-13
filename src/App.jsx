@@ -22,16 +22,18 @@ export default function App() {
             <div className="min-h-screen flex flex-col">
               <Navbar />
               <main className="flex-1 pb-8">
-                <Routes>
-                  <Route path="/"                 element={<Landing />} />
-                  <Route path="/scan"             element={<Scanner />} />
-                  <Route path="/resultat/:id"     element={<Resultat />} />
-                  <Route path="/alternatives/:id" element={<Alternatives />} />
-                  <Route path="/pecheur/:id"      element={<ProfilPecheur />} />
-                  <Route path="/abonnement"       element={<Abonnement />} />
-                  <Route path="/mission"          element={<Mission />} />
-                  <Route path="/historique"       element={<Historique />} />
-                </Routes>
+                <div className="page-shell">
+                  <Routes>
+                    <Route path="/"                 element={<Landing />} />
+                    <Route path="/scan"             element={<Scanner />} />
+                    <Route path="/resultat/:id"     element={<Resultat />} />
+                    <Route path="/alternatives/:id" element={<Alternatives />} />
+                    <Route path="/pecheur/:id"      element={<ProfilPecheur />} />
+                    <Route path="/abonnement"       element={<Abonnement />} />
+                    <Route path="/mission"          element={<Mission />} />
+                    <Route path="/historique"       element={<Historique />} />
+                  </Routes>
+                </div>
               </main>
               <Footer />
             </div>

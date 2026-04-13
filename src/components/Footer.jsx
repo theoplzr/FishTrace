@@ -7,8 +7,8 @@ export default function Footer() {
 
   return (
     <footer className="mt-8 border-t border-gray-100 bg-white">
-      <div className="px-4 py-6 flex flex-col gap-5">
-        <div className="flex items-start justify-between gap-4">
+      <div className="site-shell py-6 flex flex-col gap-5">
+        <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
           <div>
             <div className="font-bold text-sm text-gray-900">FishTrace by MaréeForce</div>
             <p className="text-xs text-gray-500 mt-1 leading-relaxed">
@@ -20,7 +20,7 @@ export default function Footer() {
           </span>
         </div>
 
-        <div className="grid grid-cols-2 gap-2 text-sm">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 text-sm">
           <Link to="/scan" className="rounded-xl bg-gray-50 px-3 py-2 text-gray-700">Scanner</Link>
           <Link to="/historique" className="rounded-xl bg-gray-50 px-3 py-2 text-gray-700">Historique</Link>
           <Link to="/mission" className="rounded-xl bg-gray-50 px-3 py-2 text-gray-700">Notre mission</Link>

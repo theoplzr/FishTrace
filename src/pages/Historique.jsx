@@ -17,7 +17,7 @@ export default function Historique() {
 
   if (history.length === 0) {
     return (
-      <div className="px-4 pt-6 flex flex-col gap-4">
+      <div className="px-4 pt-6 flex flex-col gap-4 sm:px-6 lg:px-8">
         <div className="card text-center py-10">
           <div className="text-4xl mb-3">🕘</div>
           <h1 className="font-bold text-gray-900 text-lg">Aucun scan enregistré</h1>
@@ -25,13 +25,13 @@ export default function Historique() {
             Votre historique local apparaîtra ici après votre premier scan.
           </p>
         </div>
-        <Link to="/scan" className="btn-primary">Scanner un produit</Link>
+        <Link to="/scan" className="btn-primary md:w-auto">Scanner un produit</Link>
       </div>
     )
   }
 
   return (
-    <div className="px-4 pt-5 pb-2 flex flex-col gap-4">
+    <div className="px-4 pt-5 pb-2 flex flex-col gap-4 sm:px-6 lg:px-8">
       <div className="flex items-start justify-between gap-4">
         <div>
           <h1 className="text-xl font-bold text-gray-900">Historique des scans</h1>
@@ -44,7 +44,7 @@ export default function Historique() {
         </button>
       </div>
 
-      <div className="flex flex-col gap-3">
+      <div className="grid gap-3 lg:grid-cols-2">
         {visibleHistory.map(entry => (
           <Link key={entry.id} to={`/resultat/${entry.productId}`} className="card flex items-start gap-3">
             <div className="w-12 h-12 rounded-2xl flex items-center justify-center text-2xl" style={{ backgroundColor: '#E1F5EE' }}>
@@ -80,7 +80,7 @@ export default function Historique() {
         </div>
       )}
 
-      <Link to="/scan" className="btn-secondary">Scanner un autre produit</Link>
+      <Link to="/scan" className="btn-secondary md:w-auto">Scanner un autre produit</Link>
     </div>
   )
 }

@@ -62,7 +62,7 @@ export default function Alternatives() {
   }
 
   return (
-    <div className="flex flex-col gap-4 px-4 pt-5">
+    <div className="flex flex-col gap-4 px-4 pt-5 sm:px-6 lg:px-8">
       {isDemoActive && demoStep === 5 && id === storyProductId && demoStepData && (
         <div className="rounded-[28px] p-4" style={{ backgroundColor: '#E1F5EE' }}>
           <div className="flex items-center justify-between gap-3">
@@ -127,88 +127,90 @@ export default function Alternatives() {
           <p className="text-gray-500 text-sm">Aucune alternative trouvée pour le filtre "{filter}".</p>
         </div>
       ) : (
-        filteredAlternatives.map((alternative, index) => {
-          const isLocked = !isSubscribed && index > 0
-          const isDemoChoice = isDemoActive && demoStep === 5 && alternative.product_id === 'maquereau-marco'
+        <div className="grid gap-4 md:grid-cols-2 2xl:grid-cols-3">
+          {filteredAlternatives.map((alternative, index) => {
+            const isLocked = !isSubscribed && index > 0
+            const isDemoChoice = isDemoActive && demoStep === 5 && alternative.product_id === 'maquereau-marco'
 
-          return (
-            <div key={alternative.product_id} className={`card relative ${isLocked ? 'overflow-hidden' : ''}`} style={isDemoChoice ? { border: '2px solid #1D9E75' } : {}}>
-              {isDemoChoice && (
-                <span className="absolute -top-3 left-4 text-[11px] font-bold px-3 py-1 rounded-full text-white" style={{ backgroundColor: '#1D9E75' }}>
-                  Choix de Théo
-                </span>
-              )}
-
-              {isLocked && (
-                <div className="absolute inset-0 rounded-2xl z-10 flex flex-col items-center justify-center gap-2" style={{ backgroundColor: 'rgba(255,255,255,0.92)', backdropFilter: 'blur(3px)' }}>
-                  <span className="text-2xl">🔒</span>
-                  <p className="text-sm font-semibold text-gray-800">Alternative réservée</p>
-                  <p className="text-xs text-gray-500 text-center px-4">Accédez aux 3 alternatives et aux filtres pour 4€/mois</p>
-                  <Link to="/abonnement" className="text-xs font-semibold px-4 py-2 rounded-xl text-white mt-1" style={{ backgroundColor: '#1D9E75' }}>
-                    S'abonner →
-                  </Link>
-                </div>
-              )}
-
-              <div className={isLocked ? 'blur-sm select-none pointer-events-none' : ''}>
-                <div className="flex items-start gap-3">
-                  <ScoreBadge score={alternative.product?.score} size="md" />
-                  <div className="flex-1 min-w-0">
-                    <div className="font-bold text-gray-900">{alternative.product?.emoji} {alternative.product?.name}</div>
-                    <div className="text-xs text-gray-500 mt-0.5">{alternative.product?.label}</div>
-                    <div className="flex gap-2 mt-1.5 flex-wrap">
-                      <span className="text-xs px-2 py-0.5 rounded-full text-white font-medium" style={{ backgroundColor: '#1D9E75' }}>
-                        Score {alternative.product?.score} — {SCORES[alternative.product?.score]?.text}
-                      </span>
-                      <span className="text-xs px-2 py-0.5 rounded-full bg-gray-100 text-gray-500">
-                        {alternative.product?.family}
-                      </span>
-                      {alternative.available ? (
-                        <span className="text-xs px-2 py-0.5 rounded-full bg-green-100 text-green-700">✓ Disponible</span>
-                      ) : (
-                        <span className="text-xs px-2 py-0.5 rounded-full bg-gray-100 text-gray-500">Bientôt disponible</span>
-                      )}
-                    </div>
-                  </div>
-                  <div className="text-right flex-shrink-0">
-                    <div className="text-sm font-bold" style={{ color: '#1D9E75' }}>{alternative.distance} km</div>
-                    <div className="text-xs text-gray-400">de vous</div>
-                  </div>
-                </div>
-
-                {alternative.fisherman && (
-                  <Link to={`/pecheur/${alternative.fisherman.id}`} className="flex items-center gap-2.5 mt-3 p-2.5 rounded-xl" style={{ backgroundColor: '#E1F5EE' }}>
-                    <div className="w-8 h-8 rounded-full flex items-center justify-center text-base" style={{ backgroundColor: '#9FE1CB' }}>
-                      {alternative.fisherman.emoji}
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <div className="text-xs font-semibold" style={{ color: '#085041' }}>
-                        Pêché par {alternative.fisherman.name}
-                      </div>
-                      <div className="text-xs truncate" style={{ color: '#1D9E75' }}>{alternative.fisherman.location} · {alternative.fisherman.method.split(' · ')[0]}</div>
-                    </div>
-                    <span className="text-xs" style={{ color: '#1D9E75' }}>→</span>
-                  </Link>
+            return (
+              <div key={alternative.product_id} className={`card relative ${isLocked ? 'overflow-hidden' : ''}`} style={isDemoChoice ? { border: '2px solid #1D9E75' } : {}}>
+                {isDemoChoice && (
+                  <span className="absolute -top-3 left-4 text-[11px] font-bold px-3 py-1 rounded-full text-white" style={{ backgroundColor: '#1D9E75' }}>
+                    Choix de Théo
+                  </span>
                 )}
 
-                <div className="flex gap-2 mt-2">
-                  <div className="flex-1 text-center p-2 rounded-xl bg-gray-50">
-                    <div className="text-xs font-semibold text-gray-900">{alternative.product?.intermediaries}</div>
-                    <div className="text-xs text-gray-400">intermédiaire{alternative.product?.intermediaries !== 1 ? 's' : ''}</div>
+                {isLocked && (
+                  <div className="absolute inset-0 rounded-2xl z-10 flex flex-col items-center justify-center gap-2" style={{ backgroundColor: 'rgba(255,255,255,0.92)', backdropFilter: 'blur(3px)' }}>
+                    <span className="text-2xl">🔒</span>
+                    <p className="text-sm font-semibold text-gray-800">Alternative réservée</p>
+                    <p className="text-xs text-gray-500 text-center px-4">Accédez aux 3 alternatives et aux filtres pour 4€/mois</p>
+                    <Link to="/abonnement" className="text-xs font-semibold px-4 py-2 rounded-xl text-white mt-1" style={{ backgroundColor: '#1D9E75' }}>
+                      S'abonner →
+                    </Link>
                   </div>
-                  <div className="flex-1 text-center p-2 rounded-xl bg-gray-50">
-                    <div className="text-xs font-semibold text-gray-900">{alternative.product?.origin?.split(',')[0]}</div>
-                    <div className="text-xs text-gray-400">origine</div>
+                )}
+
+                <div className={isLocked ? 'blur-sm select-none pointer-events-none' : ''}>
+                  <div className="flex items-start gap-3">
+                    <ScoreBadge score={alternative.product?.score} size="md" />
+                    <div className="flex-1 min-w-0">
+                      <div className="font-bold text-gray-900">{alternative.product?.emoji} {alternative.product?.name}</div>
+                      <div className="text-xs text-gray-500 mt-0.5">{alternative.product?.label}</div>
+                      <div className="flex gap-2 mt-1.5 flex-wrap">
+                        <span className="text-xs px-2 py-0.5 rounded-full text-white font-medium" style={{ backgroundColor: '#1D9E75' }}>
+                          Score {alternative.product?.score} — {SCORES[alternative.product?.score]?.text}
+                        </span>
+                        <span className="text-xs px-2 py-0.5 rounded-full bg-gray-100 text-gray-500">
+                          {alternative.product?.family}
+                        </span>
+                        {alternative.available ? (
+                          <span className="text-xs px-2 py-0.5 rounded-full bg-green-100 text-green-700">✓ Disponible</span>
+                        ) : (
+                          <span className="text-xs px-2 py-0.5 rounded-full bg-gray-100 text-gray-500">Bientôt disponible</span>
+                        )}
+                      </div>
+                    </div>
+                    <div className="text-right flex-shrink-0">
+                      <div className="text-sm font-bold" style={{ color: '#1D9E75' }}>{alternative.distance} km</div>
+                      <div className="text-xs text-gray-400">de vous</div>
+                    </div>
                   </div>
-                  <div className="flex-1 text-center p-2 rounded-xl bg-gray-50">
-                    <div className="text-xs font-semibold" style={{ color: '#1D9E75' }}>{alternative.product?.label}</div>
-                    <div className="text-xs text-gray-400">label</div>
+
+                  {alternative.fisherman && (
+                    <Link to={`/pecheur/${alternative.fisherman.id}`} className="flex items-center gap-2.5 mt-3 p-2.5 rounded-xl" style={{ backgroundColor: '#E1F5EE' }}>
+                      <div className="w-8 h-8 rounded-full flex items-center justify-center text-base" style={{ backgroundColor: '#9FE1CB' }}>
+                        {alternative.fisherman.emoji}
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <div className="text-xs font-semibold" style={{ color: '#085041' }}>
+                          Pêché par {alternative.fisherman.name}
+                        </div>
+                        <div className="text-xs truncate" style={{ color: '#1D9E75' }}>{alternative.fisherman.location} · {alternative.fisherman.method.split(' · ')[0]}</div>
+                      </div>
+                      <span className="text-xs" style={{ color: '#1D9E75' }}>→</span>
+                    </Link>
+                  )}
+
+                  <div className="flex gap-2 mt-2">
+                    <div className="flex-1 text-center p-2 rounded-xl bg-gray-50">
+                      <div className="text-xs font-semibold text-gray-900">{alternative.product?.intermediaries}</div>
+                      <div className="text-xs text-gray-400">intermédiaire{alternative.product?.intermediaries !== 1 ? 's' : ''}</div>
+                    </div>
+                    <div className="flex-1 text-center p-2 rounded-xl bg-gray-50">
+                      <div className="text-xs font-semibold text-gray-900">{alternative.product?.origin?.split(',')[0]}</div>
+                      <div className="text-xs text-gray-400">origine</div>
+                    </div>
+                    <div className="flex-1 text-center p-2 rounded-xl bg-gray-50">
+                      <div className="text-xs font-semibold" style={{ color: '#1D9E75' }}>{alternative.product?.label}</div>
+                      <div className="text-xs text-gray-400">label</div>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          )
-        })
+            )
+          })}
+        </div>
       )}
 
       {!isSubscribed && (
@@ -224,7 +226,7 @@ export default function Alternatives() {
         </div>
       )}
 
-      <Link to="/scan" className="btn-secondary text-center">
+      <Link to="/scan" className="btn-secondary text-center md:w-auto">
         📷 Scanner un autre produit
       </Link>
     </div>
