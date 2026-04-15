@@ -7,17 +7,18 @@ import { DEMO_STEPS, useDemoMode } from '../hooks/useDemoMode'
 import { useSubscription } from '../hooks/useSubscription'
 
 const FAQ = [
-  { q: "Pourquoi un plan Premium à 4€/mois ?", a: "Le plan Premium finance les alternatives durables, l'historique des scans et l'accompagnement des artisans sans dépendre d'un modèle publicitaire." },
-  { q: 'Pourquoi le plan Pro est à 10€/mois ?', a: 'Un artisan indépendant n’a pas besoin d’un logiciel lourd. Le plan Pro reste accessible et couvre le profil certifié, le QR “pêché par X”, les demandes directes et le suivi d’impact.' },
+  { q: "Qui peut prendre le Premium à 4€/mois ?", a: "Les consommateurs et les artisans. Le consommateur débloque les alternatives complètes ; l’artisan débloque sa preuve QR et son profil renforcé." },
+  { q: 'À qui s’adresse le Pro à 10€/mois ?', a: 'Uniquement aux restaurateurs qui veulent afficher un label éco-responsable, relier leur carte aux artisans et prouver l’origine du poisson en salle.' },
+  { q: 'Comment MaréeForce gagne avec les artisans ?', a: 'L’artisan vient vendre mieux sa pêche. MaréeForce prend surtout une commission de 5-8% uniquement quand une vente directe est générée.' },
   { q: 'En quoi FishTrace se différencie de Poiscaille ?', a: 'Poiscaille est surtout un modèle de casier de la mer. FishTrace intervient au moment du doute en rayon : scan, score, alerte greenwashing, puis redirection vers une alternative artisanale.' },
   { q: 'Les labels MSC sont-ils tous mauvais ?', a: "Non. FishTrace ne diabolise pas un logo seul : l'app recroise zone, méthode de pêche, intermédiaires et critiques documentées." },
   { q: 'Puis-je résilier ?', a: 'Oui. Les offres sont pensées sans engagement, avec une gestion simple depuis votre espace MaréeForce.' },
 ]
 
 const REVENUE_STREAMS = [
-  { title: 'Premium consommateurs', value: '4€/mois', desc: 'Accès aux alternatives complètes, filtres et historique.' },
-  { title: 'Pro artisans', value: '10€/mois', desc: 'Profil certifié, QR traçabilité et commandes directes.' },
-  { title: 'Commission circuit court', value: '5-8%', desc: 'Prélevée uniquement lorsqu’une commande directe est générée.' },
+  { title: 'Premium consommateur/artisan', value: '4€/mois', desc: 'Alternatives complètes, historique, profil artisan et QR traçabilité.' },
+  { title: 'Commission artisan', value: '5-8%', desc: 'Prélevée uniquement quand une vente directe est générée.' },
+  { title: 'Pro restaurant', value: '10€/mois', desc: 'Label éco-responsable, QR menu et preuve client en salle.' },
 ]
 
 export default function Abonnement() {
@@ -63,10 +64,10 @@ export default function Abonnement() {
             </div>
             <h1 className="text-3xl font-bold text-gray-900 mt-2 leading-tight">Choisissez l’accès qui crée le plus de valeur</h1>
             <p className="text-sm text-gray-600 mt-2 leading-relaxed max-w-2xl">
-              MaréeForce combine abonnement consommateur, abonnement artisan et commission sur les ventes directes pour financer une pêche plus transparente.
+              MaréeForce combine Premium à 4€ pour consommateurs/artisans, commission sur les ventes directes et Pro à 10€ pour les restaurateurs éco-responsables.
             </p>
             <div className="inline-flex mt-4 px-3 py-1.5 rounded-full text-xs font-semibold" style={{ backgroundColor: '#0F6E56', color: 'white' }}>
-              Accès actuel : {tier === 'free' ? 'Gratuit' : tier === 'freemium' ? 'Premium' : 'Pro Artisan'}
+              Accès actuel : {tier === 'free' ? 'Gratuit' : tier === 'freemium' ? 'Premium' : 'Restaurant Pro'}
             </div>
           </div>
 
@@ -97,7 +98,7 @@ export default function Abonnement() {
         </div>
       )}
 
-      <div className="grid gap-3 px-4 pt-5 sm:px-6 lg:px-8 lg:grid-cols-2">
+      <div className="grid gap-3 px-4 pt-5 sm:px-6 lg:px-8 xl:grid-cols-3">
         <div className="rounded-[28px] p-5 bg-white border border-gray-100">
           <div className="text-xs font-semibold uppercase tracking-[0.16em]" style={{ color: '#1D9E75' }}>
             Espace consommateur
@@ -115,9 +116,20 @@ export default function Abonnement() {
           </div>
           <h2 className="font-bold text-gray-900 mt-1">Prouver la pêche artisanale et vendre en direct</h2>
           <p className="text-sm text-gray-600 mt-2 leading-relaxed">
-            Le Pro Artisan ajoute le QR “pêché par X”, le profil certifié, les lots du jour et les demandes directes générées après les scans.
+            L’artisan utilise le Premium à 4€/mois, puis MaréeForce prend 5-8% de commission sur les ventes directes générées.
           </p>
           <Link to="/artisan" className="btn-secondary mt-4">Voir l’espace artisan</Link>
+        </div>
+
+        <div className="rounded-[28px] p-5 bg-white border border-gray-100">
+          <div className="text-xs font-semibold uppercase tracking-[0.16em]" style={{ color: '#1D9E75' }}>
+            Espace restaurateur
+          </div>
+          <h2 className="font-bold text-gray-900 mt-1">Afficher un label éco-responsable</h2>
+          <p className="text-sm text-gray-600 mt-2 leading-relaxed">
+            Le Pro à 10€/mois est réservé aux restaurants : QR menu, badge salle et preuve d’origine pour les clients.
+          </p>
+          <Link to="/restaurateur" className="btn-secondary mt-4">Voir l’espace restaurateur</Link>
         </div>
       </div>
 
@@ -202,10 +214,10 @@ export default function Abonnement() {
               {plan.id === 'pro' && (
                 <div className="flex flex-col gap-3">
                   <button onClick={() => openCheckout(plan)} className="btn-primary">
-                    {isActive ? 'Gérer Pro Artisan' : plan.cta}
+                    {isActive ? 'Gérer Restaurant Pro' : plan.cta}
                   </button>
-                  <Link to="/artisan" className="btn-secondary text-center block">
-                    Ouvrir l’espace artisan
+                  <Link to="/restaurateur" className="btn-secondary text-center block">
+                    Ouvrir l’espace restaurateur
                   </Link>
                 </div>
               )}
@@ -221,9 +233,9 @@ export default function Abonnement() {
         />
 
         <ProQrGenerator
-          fishermanName="Artisan MaréeForce"
-          productName="Maquereau de ligne"
-          location="Douarnenez, Bretagne"
+          fishermanName="Marco Ferreira"
+          productName="Maquereau de ligne · menu restaurant"
+          location="Douarnenez → Restaurant partenaire"
           locked={!isPro}
           onUnlock={() => activatePlan('pro')}
         />
@@ -249,7 +261,7 @@ export default function Abonnement() {
       <div className="px-4 mt-5 sm:px-6 lg:px-8">
         <div className="flex flex-col sm:flex-row gap-3">
           <Link to="/mission" className="btn-secondary md:w-auto">Voir la mission MaréeForce</Link>
-          <Link to="/artisan" className="btn-secondary md:w-auto">Voir l’espace artisan</Link>
+          <Link to="/restaurateur" className="btn-secondary md:w-auto">Voir l’espace restaurateur</Link>
         </div>
       </div>
 
@@ -264,8 +276,8 @@ export default function Abonnement() {
                 <h2 className="text-xl font-bold text-gray-900 mt-1">{checkoutPlan.name}</h2>
                 <p className="text-sm text-gray-500 mt-1">
                   {checkoutPlan.id === 'freemium'
-                    ? 'Pour les consommateurs qui veulent choisir un poisson plus responsable.'
-                    : 'Pour les artisans qui veulent prouver leur pêche et vendre plus directement.'}
+                    ? 'Pour les consommateurs et artisans qui veulent débloquer plus de traçabilité.'
+                    : 'Pour les restaurateurs qui veulent afficher un label éco-responsable.'}
                 </p>
               </div>
               <button onClick={() => setCheckoutPlan(null)} className="text-sm font-semibold text-gray-400">

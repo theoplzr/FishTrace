@@ -6,11 +6,24 @@ import { DEMO_STEPS, useDemoMode } from '../hooks/useDemoMode'
 
 const DEMO_PRODUCTS = PRODUCTS.filter(product => ['saumon-msc-chili', 'thon-boite'].includes(product.id))
 const ANALYSIS_STEPS = [
-  { title: 'Lecture du code-barre', detail: 'Identification du produit et rapprochement catalogue.' },
+  { title: 'Lecture du QR', detail: 'Identification de la preuve MaréeForce ou du produit.' },
   { title: 'Croisement IFREMER', detail: 'Vérification de la zone, du stock et de la méthode.' },
   { title: 'Calcul du score', detail: 'Pondération traçabilité, labels et intermédiaires.' },
   { title: 'Recherche d’alternatives', detail: 'Matching avec les artisans MaréeForce à proximité.' },
 ]
+
+function getTracePathFromQr(rawValue) {
+  try {
+    const url = new URL(rawValue)
+    if (url.pathname.startsWith('/trace/')) {
+      return `${url.pathname}${url.search}`
+    }
+  } catch {
+    return null
+  }
+
+  return null
+}
 
 export default function Scanner() {
   const videoRef = useRef(null)
@@ -25,6 +38,7 @@ export default function Scanner() {
   const [guidedStepIndex, setGuidedStepIndex] = useState(0)
   const [analysisStepIndex, setAnalysisStepIndex] = useState(0)
   const [detectedProduct, setDetectedProduct] = useState(null)
+  const [qrStatus, setQrStatus] = useState('idle')
 
   const currentGuidedStep = DEMO_STEPS[guidedStepIndex]
 
@@ -97,10 +111,62 @@ export default function Scanner() {
     simulateScan(storyProductId, { guided: true })
   })
 
+  const handleQrValue = useEffectEvent((rawValue) => {
+    const tracePath = getTracePathFromQr(rawValue)
+    if (!tracePath) return
+
+    setQrStatus('detected')
+    stopCamera()
+    navigate(tracePath)
+  })
+
   useEffect(() => {
     startCamera()
     return () => stopCamera()
   }, [])
+
+  useEffect(() => {
+    if (!cameraActive || scanning || guidedDemoActive) return undefined
+
+    const BarcodeDetector = window.BarcodeDetector
+    if (!BarcodeDetector || !videoRef.current) {
+      setQrStatus('unsupported')
+      return undefined
+    }
+
+    const detector = new BarcodeDetector({ formats: ['qr_code'] })
+    let frameId = 0
+    let stopped = false
+    setQrStatus('ready')
+
+    async function scanFrame() {
+      if (stopped) return
+
+      try {
+        const video = videoRef.current
+        if (video && video.readyState >= 2) {
+          const codes = await detector.detect(video)
+          const qrCode = codes.find(code => code.rawValue)
+          if (qrCode) {
+            handleQrValue(qrCode.rawValue)
+            return
+          }
+        }
+      } catch {
+        setQrStatus('unsupported')
+        return
+      }
+
+      frameId = window.requestAnimationFrame(scanFrame)
+    }
+
+    frameId = window.requestAnimationFrame(scanFrame)
+
+    return () => {
+      stopped = true
+      window.cancelAnimationFrame(frameId)
+    }
+  }, [cameraActive, guidedDemoActive, scanning])
 
   useEffect(() => {
     if (!guidedDemoActive || scanning) return undefined
@@ -176,7 +242,7 @@ export default function Scanner() {
 
           {!scanning && (
             <p className="text-white text-sm mt-5 opacity-90 text-center">
-              {cameraError ? 'Caméra non disponible. Utilisez l’exemple guidé ou choisissez un produit.' : 'Pointez vers un code-barre ou lancez un exemple guidé.'}
+              {cameraError ? 'Caméra non disponible. Utilisez l’exemple guidé ou choisissez un produit.' : 'Pointez vers un QR MaréeForce ou lancez un exemple guidé.'}
             </p>
           )}
         </div>
@@ -189,11 +255,24 @@ export default function Scanner() {
           <>
             <h1 className="font-bold text-gray-900 text-base mb-1">Scanner un produit</h1>
             <p className="text-xs text-gray-400 mb-4">
-              Analysez un produit en rayon ou explorez un exemple guidé pour découvrir le fonctionnement.
+              Scannez un QR MaréeForce pour ouvrir la fiche traçabilité, ou explorez un exemple guidé.
             </p>
+            {qrStatus === 'ready' && (
+              <div className="rounded-2xl px-3 py-2 text-xs font-semibold mb-3" style={{ backgroundColor: '#E1F5EE', color: '#0F6E56' }}>
+                Lecture QR active
+              </div>
+            )}
+            {qrStatus === 'unsupported' && (
+              <div className="rounded-2xl px-3 py-2 text-xs font-semibold mb-3" style={{ backgroundColor: '#FAEEDA', color: '#633806' }}>
+                Lecture QR automatique non disponible sur ce navigateur. Utilisez le lien de la fiche QR.
+              </div>
+            )}
             <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">
               <button onClick={startGuidedDemo} className="btn-primary sm:w-auto lg:w-full">
                 🎬 Voir un exemple guidé
+              </button>
+              <button onClick={() => navigate('/trace/marco-ferreira?product=maquereau-marco')} className="btn-secondary sm:w-auto lg:w-full">
+                Ouvrir le QR Marco
               </button>
               <button onClick={() => { stopDemo(); setShowManualDemo(true) }} className="btn-secondary sm:w-auto lg:w-full">
                 Choisir un produit

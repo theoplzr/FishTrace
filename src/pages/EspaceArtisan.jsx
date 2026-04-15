@@ -23,7 +23,7 @@ const directBenefits = [
 ]
 
 export default function EspaceArtisan() {
-  const { isPro, activatePlan } = useSubscription()
+  const { isSubscribed, activatePlan } = useSubscription()
 
   return (
     <div className="flex flex-col gap-5 px-4 pt-5 pb-6 sm:px-6 lg:px-8">
@@ -31,7 +31,7 @@ export default function EspaceArtisan() {
         <div className="grid lg:grid-cols-[minmax(0,1.1fr)_380px]">
           <div className="p-5 sm:p-7" style={{ background: 'linear-gradient(135deg, #085041 0%, #0F6E56 58%, #1D9E75 100%)' }}>
             <div className="text-xs font-semibold uppercase tracking-[0.16em]" style={{ color: '#9FE1CB' }}>
-              Espace artisan · MaréeForce Pro
+              Espace artisan · commission à la vente
             </div>
             <h1 className="text-2xl lg:text-4xl font-bold text-white mt-3 leading-tight">
               Valoriser la pêche du jour sans passer par un grossiste.
@@ -52,8 +52,8 @@ export default function EspaceArtisan() {
               ))}
             </div>
             <div className="flex flex-col sm:flex-row gap-3 mt-6">
-              <button onClick={() => activatePlan('pro')} className="btn-primary sm:w-auto">
-                Passer au Pro Artisan
+              <button onClick={() => activatePlan('freemium')} className="btn-primary sm:w-auto">
+                Passer au Premium 4€/mois
               </button>
               <Link to="/pecheur/marco-ferreira" className="btn-secondary bg-white/5 border-white/20 text-white hover:bg-white/10 sm:w-auto">
                 Voir le profil public
@@ -99,7 +99,7 @@ export default function EspaceArtisan() {
                 <h2 className="font-bold text-gray-900 mt-1">Demandes reçues après scan</h2>
               </div>
               <span className="text-xs font-semibold px-3 py-1 rounded-full" style={{ backgroundColor: '#E1F5EE', color: '#0F6E56' }}>
-                0 intermédiaire
+                Commission 5-8%
               </span>
             </div>
             <div className="flex flex-col gap-2">
@@ -140,17 +140,17 @@ export default function EspaceArtisan() {
             fishermanName="Marco Ferreira"
             productName="Maquereau de ligne · lot MF-0426"
             location="Douarnenez, Bretagne"
-            locked={!isPro}
-            onUnlock={() => activatePlan('pro')}
+            locked={!isSubscribed}
+            onUnlock={() => activatePlan('freemium')}
           />
 
           <div className="rounded-[28px] p-5" style={{ backgroundColor: '#E1F5EE' }}>
             <div className="text-xs font-semibold uppercase tracking-[0.16em]" style={{ color: '#1D9E75' }}>
-              Plan conseillé
+              Modèle artisan
             </div>
-            <h2 className="font-bold text-gray-900 mt-1">Pro Artisan · 10€/mois</h2>
+            <h2 className="font-bold text-gray-900 mt-1">Premium 4€/mois + commission</h2>
             <p className="text-sm text-gray-600 mt-2 leading-relaxed">
-              Un plan accessible pour le terrain : profil certifié, QR traçabilité, commandes directes et preuve d’impact, sans outil entreprise lourd.
+              L’artisan peut prendre le Premium pour sa traçabilité, puis MaréeForce se rémunère surtout sur une commission de 5-8% quand une vente directe est générée.
             </p>
             <Link to="/abonnement" className="btn-secondary mt-4">
               Comparer les offres

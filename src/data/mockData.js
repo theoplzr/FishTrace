@@ -188,7 +188,7 @@ export const PLANS = [
   },
   {
     id:'freemium', name:'Premium', price:4, billing:'/mois',
-    badge:'Pour consommateurs', recommended:true,
+    badge:'Consommateurs & artisans', recommended:true,
     features:[
       { text:'Scan code-barre illimité',      ok:true },
       { text:'Score durabilité A→F',          ok:true },
@@ -197,24 +197,24 @@ export const PLANS = [
       { text:'3 alternatives complètes',      ok:true },
       { text:'Profil pêcheur complet',        ok:true },
       { text:'Filtre par espèce',             ok:true },
-      { text:'Historique des scans',          ok:true },
+      { text:'QR traçabilité artisan',        ok:true },
     ],
     cta:"S'abonner pour 4€/mois",
   },
   {
-    id:'pro', name:'Pro Artisan', price:10, billing:'/mois',
-    badge:'Pour artisans', recommended:false,
+    id:'pro', name:'Pro Restaurant', price:10, billing:'/mois',
+    badge:'Restaurateurs', recommended:false,
     features:[
       { text:'Tout le plan Premium',          ok:true },
-      { text:'QR code « pêché par X »',       ok:true },
-      { text:'Profil artisan certifié',       ok:true },
-      { text:'Demandes directes clients',     ok:true },
-      { text:'Lots du jour et disponibilité', ok:true },
+      { text:'Label restaurant éco-responsable', ok:true },
+      { text:'QR menu relié aux artisans',    ok:true },
+      { text:'Fiche origine pour les clients', ok:true },
+      { text:'Badge salle et carte',          ok:true },
+      { text:'Rapport impact mensuel',        ok:true },
+      { text:'Mise en avant MaréeForce',      ok:true },
       { text:'Support prioritaire',           ok:true },
-      { text:'Rapport mensuel impact',        ok:true },
-      { text:'Preuve menu, étal ou rayon',    ok:true },
     ],
-    cta:"Passer au Pro Artisan",
+    cta:"Devenir restaurant Pro",
   },
 ]
 

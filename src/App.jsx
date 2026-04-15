@@ -10,6 +10,8 @@ import Mission from './pages/Mission'
 import Historique from './pages/Historique'
 import EspaceArtisan from './pages/EspaceArtisan'
 import Demo from './pages/Demo'
+import Trace from './pages/Trace'
+import Restaurateur from './pages/Restaurateur'
 import { SubscriptionProvider } from './hooks/useSubscription'
 import { ScanHistoryProvider } from './hooks/useScanHistory'
 import { DemoModeProvider } from './hooks/useDemoMode'
@@ -34,7 +36,9 @@ export default function App() {
                     <Route path="/mission"          element={<Mission />} />
                     <Route path="/historique"       element={<Historique />} />
                     <Route path="/artisan"          element={<EspaceArtisan />} />
+                    <Route path="/restaurateur"     element={<Restaurateur />} />
                     <Route path="/demo"             element={<Demo />} />
+                    <Route path="/trace/:fishermanId" element={<Trace />} />
                   </Routes>
                 </div>
               </main>

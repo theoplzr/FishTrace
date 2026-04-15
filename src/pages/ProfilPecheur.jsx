@@ -8,7 +8,7 @@ export default function ProfilPecheur() {
   const { id } = useParams()
   const navigate = useNavigate()
   const fisherman = getFisherman(id)
-  const { isPro } = useSubscription()
+  const { isSubscribed } = useSubscription()
   const products = fisherman ? PRODUCTS.filter(product => product.fisherman_id === fisherman.id) : []
   const [selectedProductId, setSelectedProductId] = useState(null)
 
@@ -116,7 +116,7 @@ export default function ProfilPecheur() {
               fishermanName={fisherman.name}
               productName={selectedProduct.name}
               location={fisherman.location}
-              locked={!isPro}
+              locked={!isSubscribed}
               onUnlock={() => navigate('/abonnement')}
             />
           )}

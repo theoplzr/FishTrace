@@ -2,18 +2,15 @@ import { Link, useLocation } from 'react-router-dom'
 import { useSubscription } from '../hooks/useSubscription'
 
 const NAV_ITEMS = [
-  { to: '/', label: 'Accueil' },
-  { to: '/historique', label: 'Historique' },
+  { to: '/scan', label: 'Consommateur' },
   { to: '/artisan', label: 'Artisan' },
-  { to: '/mission', label: 'Mission' },
-  { to: '/abonnement', label: 'Offres' },
-  { to: '/demo', label: 'Démo' },
+  { to: '/restaurateur', label: 'Restaurateur' },
 ]
 
 export default function Navbar() {
   const { pathname } = useLocation()
   const { tier } = useSubscription()
-  const planLabel = tier === 'pro' ? 'Pro 10€' : tier === 'freemium' ? 'Premium 4€' : 'Gratuit'
+  const planLabel = tier === 'pro' ? 'Restaurant Pro 10€' : tier === 'freemium' ? 'Premium 4€' : 'Gratuit'
 
   return (
     <nav className="bg-white border-b border-gray-100 sticky top-0 z-50">
@@ -23,21 +20,12 @@ export default function Navbar() {
             <img src="/brand-mark.svg" alt="FishTrace" className="w-9 h-9 rounded-xl" />
             <div className="min-w-0">
               <span className="font-bold text-gray-900 text-sm block">FishTrace</span>
-              <div className="text-gray-400 text-[11px] leading-tight hidden sm:block">Scan consommateur + preuve artisan.</div>
+              <div className="text-gray-400 text-[11px] leading-tight hidden sm:block">Consommateur · artisan · restaurant.</div>
             </div>
           </Link>
 
-          <div className="flex items-center gap-2 shrink-0">
-            <Link
-              to="/scan"
-              className="text-sm font-semibold px-4 py-2.5 rounded-2xl text-white transition-colors"
-              style={{ backgroundColor: '#1D9E75' }}
-            >
-              Scanner
-            </Link>
-            <div className="hidden lg:inline-flex text-xs font-semibold px-3 py-2 rounded-xl border-2 transition-colors hover:bg-teal-50" style={{borderColor:'#1D9E75', color:'#0F6E56'}}>
-              {planLabel}
-            </div>
+          <div className="hidden sm:inline-flex text-xs font-semibold px-3 py-2 rounded-xl border-2 transition-colors hover:bg-teal-50 shrink-0" style={{borderColor:'#1D9E75', color:'#0F6E56'}}>
+            {planLabel}
           </div>
         </div>
 

@@ -15,7 +15,7 @@ const marcoFlow = [
   { step: '1', title: 'Profil certifié', desc: 'Marco prouve son bateau, sa zone FAO et sa méthode.' },
   { step: '2', title: 'Lot du jour', desc: '80 kg de maquereau de ligne sont disponibles.' },
   { step: '3', title: 'Commandes directes', desc: 'Trois demandes arrivent sans passer par un grossiste.' },
-  { step: '4', title: 'QR Pro', desc: 'Le QR “pêché par Marco” rend la preuve visible sur étal ou menu.' },
+  { step: '4', title: 'Commission', desc: 'MaréeForce prend 5-8% uniquement sur les ventes générées.' },
 ]
 
 const featureLinks = [
@@ -23,14 +23,15 @@ const featureLinks = [
   { to: '/resultat/saumon-msc-chili', label: 'Résultat', desc: 'Score A-F, origine, méthode, intermédiaires.' },
   { to: '/alternatives/saumon-msc-chili', label: 'Alternatives', desc: 'Filtres par espèce et alternatives artisanales.' },
   { to: '/historique', label: 'Historique', desc: 'Scans sauvegardés en local.' },
-  { to: '/artisan', label: 'Espace Marco', desc: 'Profil, commandes, marge directe, QR Pro.' },
-  { to: '/abonnement', label: 'Vente', desc: 'Premium 4€, Pro 10€, commission 5-8%.' },
+  { to: '/artisan', label: 'Espace Marco', desc: 'Profil, commandes, marge directe, QR Premium.' },
+  { to: '/restaurateur', label: 'Restaurateur', desc: 'Label éco-responsable et QR menu.' },
+  { to: '/abonnement', label: 'Vente', desc: 'Premium 4€, commission 5-8%, Pro restaurant 10€.' },
 ]
 
 export default function Demo() {
   const navigate = useNavigate()
   const { startDemo, stopDemo } = useDemoMode()
-  const { tier, isPro, activatePlan, resetPlan } = useSubscription()
+  const { tier, isSubscribed, activatePlan, resetPlan } = useSubscription()
 
   function launchTheoDemo() {
     resetPlan()
@@ -40,8 +41,14 @@ export default function Demo() {
 
   function launchMarcoDemo() {
     stopDemo()
-    activatePlan('pro')
+    activatePlan('freemium')
     navigate('/artisan')
+  }
+
+  function launchRestaurantDemo() {
+    stopDemo()
+    activatePlan('pro')
+    navigate('/restaurateur')
   }
 
   function launchSalesDemo() {
@@ -59,10 +66,10 @@ export default function Demo() {
               Mode présentation
             </div>
             <h1 className="text-2xl lg:text-4xl font-bold text-white mt-3 leading-tight">
-              Démontrer MaréeForce en deux ventes : Théo et Marco.
+              Démontrer MaréeForce en trois vues : Théo, Marco et restaurateur.
             </h1>
             <p className="text-sm lg:text-base mt-3 leading-relaxed max-w-2xl" style={{ color: '#D5F4EA' }}>
-              Utilisez cette page pour enchaîner toutes les fonctionnalités : scan, score, alternatives, abonnement Premium, espace artisan, QR Pro, impact et modèle économique.
+              Utilisez cette page pour enchaîner toutes les fonctionnalités : scan gratuit, Premium 4€, commission artisan, Pro restaurant, QR et impact.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 mt-6">
               <button onClick={launchTheoDemo} className="btn-primary sm:w-auto">
@@ -70,6 +77,9 @@ export default function Demo() {
               </button>
               <button onClick={launchMarcoDemo} className="btn-secondary bg-white/5 border-white/20 text-white hover:bg-white/10 sm:w-auto">
                 Lancer le parcours Marco
+              </button>
+              <button onClick={launchRestaurantDemo} className="btn-secondary bg-white/5 border-white/20 text-white hover:bg-white/10 sm:w-auto">
+                Lancer le parcours restaurant
               </button>
             </div>
           </div>
@@ -82,7 +92,7 @@ export default function Demo() {
               <div className="rounded-2xl bg-gray-50 p-4">
                 <div className="text-xs text-gray-400">Accès actif</div>
                 <div className="font-bold text-gray-900 mt-1">
-                  {tier === 'free' ? 'Gratuit' : tier === 'freemium' ? 'Premium consommateur' : 'Pro Artisan'}
+                  {tier === 'free' ? 'Gratuit' : tier === 'freemium' ? 'Premium' : 'Restaurant Pro'}
                 </div>
               </div>
               <div className="rounded-2xl bg-gray-50 p-4">
@@ -140,7 +150,7 @@ export default function Demo() {
             ))}
           </div>
           <button onClick={launchMarcoDemo} className="btn-primary mt-4">
-            Jouer la vente Pro Artisan
+            Jouer Premium + commission
           </button>
         </div>
       </section>
@@ -163,8 +173,8 @@ export default function Demo() {
             fishermanName="Marco Ferreira"
             productName="Maquereau de ligne · lot MF-0426"
             location="Douarnenez, Bretagne"
-            locked={!isPro}
-            onUnlock={() => activatePlan('pro')}
+            locked={!isSubscribed}
+            onUnlock={() => activatePlan('freemium')}
           />
 
           <ImpactDashboard
