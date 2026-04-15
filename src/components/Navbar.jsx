@@ -2,9 +2,9 @@ import { Link, useLocation } from 'react-router-dom'
 import { useSubscription } from '../hooks/useSubscription'
 
 const NAV_ITEMS = [
-  { to: '/scan', label: 'Consommateur' },
-  { to: '/artisan', label: 'Artisan' },
-  { to: '/restaurateur', label: 'Restaurateur' },
+  { to: '/scan', label: 'Consommateurs' },
+  { to: '/artisan', label: 'Artisans' },
+  { to: '/restaurateur', label: 'Restaurateurs' },
 ]
 
 export default function Navbar() {
@@ -19,8 +19,8 @@ export default function Navbar() {
           <Link to="/" className="flex items-center gap-2 min-w-0">
             <img src="/brand-mark.svg" alt="FishTrace" className="w-9 h-9 rounded-xl" />
             <div className="min-w-0">
-              <span className="font-bold text-gray-900 text-sm block">FishTrace</span>
-              <div className="text-gray-400 text-[11px] leading-tight hidden sm:block">Consommateur · artisan · restaurant.</div>
+              <span className="font-bold text-gray-900 text-sm block">MaréeForce</span>
+              <div className="text-gray-400 text-[11px] leading-tight hidden sm:block">Traçabilité produits de la mer.</div>
             </div>
           </Link>
 
