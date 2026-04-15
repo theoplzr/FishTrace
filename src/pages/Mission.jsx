@@ -97,7 +97,7 @@ export default function Mission() {
           <Link to="/artisan" className="btn-secondary bg-white/5 border-white/20 text-white hover:bg-white/10 sm:w-auto">
             Ouvrir l’espace artisan
           </Link>
-          <Link to="/abonnement" className="btn-secondary bg-white/5 border-white/20 text-white hover:bg-white/10 sm:w-auto">
+          <Link to="/abonnement/restaurateur" className="btn-secondary bg-white/5 border-white/20 text-white hover:bg-white/10 sm:w-auto">
             Voir les plans
           </Link>
         </div>

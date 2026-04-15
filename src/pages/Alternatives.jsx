@@ -29,7 +29,7 @@ export default function Alternatives() {
     const timer = window.setTimeout(() => {
       activatePlan('freemium')
       goToStep(6)
-      navigate('/abonnement')
+      navigate('/abonnement/consommateur')
     }, 5200)
 
     return () => window.clearTimeout(timer)
@@ -145,7 +145,7 @@ export default function Alternatives() {
                     <span className="text-2xl">🔒</span>
                     <p className="text-sm font-semibold text-gray-800">Alternative réservée</p>
                     <p className="text-xs text-gray-500 text-center px-4">Accédez aux 3 alternatives et aux filtres pour 4€/mois</p>
-                    <Link to="/abonnement" className="text-xs font-semibold px-4 py-2 rounded-xl text-white mt-1" style={{ backgroundColor: '#1D9E75' }}>
+                    <Link to="/abonnement/consommateur" className="text-xs font-semibold px-4 py-2 rounded-xl text-white mt-1" style={{ backgroundColor: '#1D9E75' }}>
                       S'abonner →
                     </Link>
                   </div>
@@ -219,7 +219,7 @@ export default function Alternatives() {
             <div className="text-2xl mb-2">🔓</div>
             <h3 className="font-bold text-white text-sm mb-1">Débloquez toutes les alternatives</h3>
             <p className="text-xs mb-3" style={{ color: '#9FE1CB' }}>3 alternatives complètes · filtres espèce · historique local</p>
-            <Link to="/abonnement" className="inline-block bg-white font-semibold text-sm px-6 py-2.5 rounded-xl" style={{ color: '#0F6E56' }}>
+            <Link to="/abonnement/consommateur" className="inline-block bg-white font-semibold text-sm px-6 py-2.5 rounded-xl" style={{ color: '#0F6E56' }}>
               S'abonner pour 4€/mois →
             </Link>
           </div>

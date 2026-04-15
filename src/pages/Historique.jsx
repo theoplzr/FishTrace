@@ -73,7 +73,7 @@ export default function Historique() {
             <p className="text-xs mt-2 leading-relaxed" style={{ color: '#9FE1CB' }}>
               {lockedCount} scan{lockedCount > 1 ? 's' : ''} supplémentaire{lockedCount > 1 ? 's' : ''} sont bien enregistrés en local, mais masqués en plan gratuit.
             </p>
-            <Link to="/abonnement" className="inline-block mt-4 bg-white font-semibold text-sm px-5 py-2.5 rounded-xl" style={{ color: '#0F6E56' }}>
+            <Link to="/abonnement/consommateur" className="inline-block mt-4 bg-white font-semibold text-sm px-5 py-2.5 rounded-xl" style={{ color: '#0F6E56' }}>
               Débloquer l'historique
             </Link>
           </div>

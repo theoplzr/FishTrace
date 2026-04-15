@@ -59,7 +59,7 @@ export default function Restaurateur() {
       </section>
 
       <div className="grid gap-3 mt-4 sm:grid-cols-2">
-        <Link to="/abonnement" className="btn-secondary">Voir l’offre Pro</Link>
+        <Link to="/abonnement/restaurateur" className="btn-secondary">Voir l’offre restaurateur</Link>
         <Link to="/trace/marco-ferreira?product=maquereau-marco" className="btn-primary">Voir une preuve client</Link>
       </div>
     </div>

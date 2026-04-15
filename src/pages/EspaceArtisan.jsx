@@ -79,7 +79,7 @@ export default function EspaceArtisan() {
       </section>
 
       <div className="grid gap-3 mt-4 sm:grid-cols-2">
-        <Link to="/abonnement" className="btn-secondary">Voir l’abonnement</Link>
+        <Link to="/abonnement/artisan" className="btn-secondary">Voir l’abonnement artisan</Link>
         <Link to="/trace/marco-ferreira?product=maquereau-marco" className="btn-primary">Voir une fiche QR</Link>
       </div>
     </div>

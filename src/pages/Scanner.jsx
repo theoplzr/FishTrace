@@ -62,7 +62,7 @@ export default function Scanner() {
         <p className="text-sm mt-2 leading-relaxed" style={{ color: '#9FE1CB' }}>
           Le scan simple affiche le produit, sa provenance et le pêcheur. Pour 4€/mois, le consommateur débloque plus de détails, l’historique, les avis, les alternatives, les goodies et la newsletter.
         </p>
-        <Link to="/abonnement" className="inline-block mt-4 bg-white font-semibold text-sm px-5 py-2.5 rounded-xl" style={{ color: '#0F6E56' }}>
+        <Link to="/abonnement/consommateur" className="inline-block mt-4 bg-white font-semibold text-sm px-5 py-2.5 rounded-xl" style={{ color: '#0F6E56' }}>
           Voir Premium 4€/mois
         </Link>
       </div>

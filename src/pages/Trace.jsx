@@ -65,9 +65,14 @@ export default function Trace() {
           <p className="text-sm mt-2 leading-relaxed" style={{ color: '#9FE1CB' }}>
             Pour 4€/mois : traçabilité complète, importation, historique, avis, goodies, newsletter et alternatives.
           </p>
-          <button onClick={() => activatePlan('freemium')} className="inline-block mt-4 bg-white font-semibold text-sm px-5 py-2.5 rounded-xl" style={{ color: '#0F6E56' }}>
-            Activer Premium 4€/mois
-          </button>
+          <div className="flex flex-col sm:flex-row gap-3 mt-4">
+            <button onClick={() => activatePlan('freemium')} className="bg-white font-semibold text-sm px-5 py-2.5 rounded-xl" style={{ color: '#0F6E56' }}>
+              Activer Premium 4€/mois
+            </button>
+            <Link to="/abonnement/consommateur" className="font-semibold text-sm px-5 py-2.5 rounded-xl border border-white/20 text-white text-center">
+              Voir l’abonnement
+            </Link>
+          </div>
         </section>
       )}
 

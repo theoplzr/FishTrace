@@ -117,7 +117,7 @@ export default function ProfilPecheur() {
               productName={selectedProduct.name}
               location={fisherman.location}
               locked={!isSubscribed}
-              onUnlock={() => navigate('/abonnement')}
+              onUnlock={() => navigate('/abonnement/artisan')}
             />
           )}
 

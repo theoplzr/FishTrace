@@ -31,7 +31,8 @@ export default function App() {
                     <Route path="/resultat/:id"     element={<Resultat />} />
                     <Route path="/alternatives/:id" element={<Alternatives />} />
                     <Route path="/pecheur/:id"      element={<ProfilPecheur />} />
-                    <Route path="/abonnement"       element={<Abonnement />} />
+                    <Route path="/abonnement"       element={<Landing />} />
+                    <Route path="/abonnement/:type" element={<Abonnement />} />
                     <Route path="/mission"          element={<Mission />} />
                     <Route path="/historique"       element={<Historique />} />
                     <Route path="/artisan"          element={<EspaceArtisan />} />
