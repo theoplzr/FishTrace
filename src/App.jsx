@@ -1,6 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
-import Footer from './components/Footer'
 import Landing from './pages/Landing'
 import Scanner from './pages/Scanner'
 import Resultat from './pages/Resultat'
@@ -9,6 +8,8 @@ import ProfilPecheur from './pages/ProfilPecheur'
 import Abonnement from './pages/Abonnement'
 import Mission from './pages/Mission'
 import Historique from './pages/Historique'
+import EspaceArtisan from './pages/EspaceArtisan'
+import Demo from './pages/Demo'
 import { SubscriptionProvider } from './hooks/useSubscription'
 import { ScanHistoryProvider } from './hooks/useScanHistory'
 import { DemoModeProvider } from './hooks/useDemoMode'
@@ -32,10 +33,11 @@ export default function App() {
                     <Route path="/abonnement"       element={<Abonnement />} />
                     <Route path="/mission"          element={<Mission />} />
                     <Route path="/historique"       element={<Historique />} />
+                    <Route path="/artisan"          element={<EspaceArtisan />} />
+                    <Route path="/demo"             element={<Demo />} />
                   </Routes>
                 </div>
               </main>
-              <Footer />
             </div>
           </BrowserRouter>
         </DemoModeProvider>

@@ -176,7 +176,7 @@ export default function Scanner() {
 
           {!scanning && (
             <p className="text-white text-sm mt-5 opacity-90 text-center">
-              {cameraError ? 'Caméra non disponible. Utilisez la démo guidée ou les produits de test.' : 'Pointez vers un code-barre ou lancez la démo Théo.'}
+              {cameraError ? 'Caméra non disponible. Utilisez l’exemple guidé ou choisissez un produit.' : 'Pointez vers un code-barre ou lancez un exemple guidé.'}
             </p>
           )}
         </div>
@@ -189,19 +189,19 @@ export default function Scanner() {
           <>
             <h1 className="font-bold text-gray-900 text-base mb-1">Scanner un produit</h1>
             <p className="text-xs text-gray-400 mb-4">
-              Démo soutenance disponible avec le storyboard de Théo Lemaire.
+              Analysez un produit en rayon ou explorez un exemple guidé pour découvrir le fonctionnement.
             </p>
             <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">
               <button onClick={startGuidedDemo} className="btn-primary sm:w-auto lg:w-full">
-                🎬 Lancer la démo guidée Théo
+                🎬 Voir un exemple guidé
               </button>
               <button onClick={() => { stopDemo(); setShowManualDemo(true) }} className="btn-secondary sm:w-auto lg:w-full">
-                Choisir un produit de démonstration
+                Choisir un produit
               </button>
             </div>
             {cameraError && (
               <p className="text-xs text-center text-gray-400 mt-3">
-                L'accès caméra a échoué. La démo reste totalement fonctionnelle.
+                L'accès caméra a échoué. Vous pouvez quand même analyser un produit de la base MaréeForce.
               </p>
             )}
           </>
@@ -212,7 +212,7 @@ export default function Scanner() {
             <div className="flex items-center justify-between gap-4">
               <div>
                 <div className="text-xs font-semibold uppercase tracking-[0.16em]" style={{ color: '#1D9E75' }}>
-                  Démo Théo · Étape {currentGuidedStep.step}/6
+                  Exemple guidé · Étape {currentGuidedStep.step}/6
                 </div>
                 <h2 className="font-bold text-gray-900 text-base mt-1">{currentGuidedStep.title}</h2>
               </div>

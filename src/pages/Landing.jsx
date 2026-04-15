@@ -20,6 +20,35 @@ const stats = [
   { value:'4×', label:'plus de poisson importé que produit en France', source:'FranceAgriMer, 2023' },
 ]
 
+const audienceCards = [
+  {
+    name: 'Consommateur',
+    role: 'Achat responsable',
+    title: 'Je veux acheter du poisson sans me faire avoir par les labels.',
+    desc: 'Scannez un produit, comprenez son score, puis trouvez une alternative artisanale près de vous.',
+    cta: 'Scanner un produit',
+    to: '/scan',
+    color: '#E1F5EE',
+    icon: '📷',
+  },
+  {
+    name: 'Artisan',
+    role: 'Vente directe',
+    title: 'Je veux vendre mieux ma pêche et prouver mon travail.',
+    desc: 'Publiez vos lots du jour, recevez des demandes directes et générez un QR de traçabilité.',
+    cta: 'Ouvrir l’espace artisan',
+    to: '/artisan',
+    color: '#FAEEDA',
+    icon: '🎣',
+  },
+]
+
+const differentiators = [
+  { title: 'Avant achat', desc: 'Scan en rayon, score A-F et alerte greenwashing sur les produits déjà devant vous.' },
+  { title: 'Après scan', desc: 'Alternatives locales reliées à de vrais profils artisans, pas seulement un guide théorique.' },
+  { title: 'Côté artisan', desc: 'QR traçabilité, demandes directes et preuve de méthode pour valoriser le prix juste.' },
+]
+
 export default function Landing() {
   return (
     <div className="flex flex-col">
@@ -28,25 +57,41 @@ export default function Landing() {
           <div>
             <div className="mb-2 flex flex-wrap items-center gap-3">
               <img src="/brand-mark.svg" alt="FishTrace" className="w-12 h-12 rounded-2xl shadow-sm" />
+              <span className="text-xs font-semibold px-3 py-1 rounded-full" style={{ backgroundColor: '#D7F3EA', color: '#0F6E56' }}>
+                Gratuit pour commencer
+              </span>
             </div>
             <h1 className="text-3xl lg:text-5xl font-bold text-gray-900 mt-3 leading-tight">
-              Scannez.<br />
-              <span style={{color:'#1D9E75'}}>Choisissez.</span><br />
-              Agissez.
+              Deux vues.<br />
+              <span style={{color:'#1D9E75'}}>Un même objectif.</span><br />
+              Mieux choisir la mer.
             </h1>
             <p className="text-sm lg:text-base font-semibold mt-3" style={{color:'#0F6E56'}}>
-              Scannez la mer. Soutenez les artisans.
+              FishTrace pour les consommateurs. MaréeForce pour les artisans.
             </p>
             <p className="text-gray-500 mt-3 text-sm lg:text-base leading-relaxed max-w-2xl">
-              FishTrace analyse la durabilité de votre poisson en 2 secondes et vous connecte directement aux pêcheurs artisanaux de votre région.
+              L’app répond à deux besoins simples : côté consommateur, comprendre ce qu’on achète ; côté artisan, prouver la pêche et capter plus de valeur en direct.
             </p>
+            <div className="mt-4 rounded-2xl p-4 bg-white/80 border border-white">
+              <div className="text-xs font-semibold uppercase tracking-[0.16em]" style={{ color: '#1D9E75' }}>
+                Commencez selon votre besoin
+              </div>
+              <p className="text-sm text-gray-600 mt-1 leading-relaxed">
+                Si vous êtes consommateur, lancez un scan. Si vous êtes artisan, ouvrez l’espace professionnel pour créer une preuve de traçabilité et vendre plus directement.
+              </p>
+            </div>
             <div className="flex flex-col sm:flex-row gap-3 mt-6">
               <Link to="/scan" className="btn-primary text-center sm:w-auto">
                 📷 Scanner un poisson
               </Link>
               <Link to="/mission" className="btn-secondary text-center sm:w-auto">
-                Découvrir la mission
+                Notre mission
               </Link>
+            </div>
+            <div className="flex flex-wrap gap-2 mt-3 text-xs text-gray-500">
+              <span className="px-3 py-1.5 rounded-full bg-white border border-gray-100">Scan consommateur</span>
+              <span className="px-3 py-1.5 rounded-full bg-white border border-gray-100">Espace artisan</span>
+              <span className="px-3 py-1.5 rounded-full bg-white border border-gray-100">Premium 4€ · Pro 10€</span>
             </div>
           </div>
 
@@ -67,6 +112,32 @@ export default function Landing() {
       </section>
 
       <section className="px-5 py-6 lg:px-8">
+        <h2 className="text-lg font-bold text-gray-900 mb-1">Choisissez votre vue</h2>
+        <p className="text-sm text-gray-500 mb-4">La navigation est volontairement simple : une entrée pour acheter mieux, une entrée pour vendre mieux.</p>
+        <div className="grid gap-4 lg:grid-cols-2">
+          {audienceCards.map(card => (
+            <div key={card.name} className="rounded-[28px] p-5 border border-gray-100 bg-white">
+              <div className="flex items-start gap-4">
+                <div className="w-14 h-14 rounded-2xl flex items-center justify-center text-3xl flex-shrink-0" style={{ backgroundColor: card.color }}>
+                  {card.icon}
+                </div>
+                <div>
+                  <div className="text-xs font-semibold uppercase tracking-[0.16em]" style={{ color: '#1D9E75' }}>
+                    {card.name} · {card.role}
+                  </div>
+                  <h3 className="font-bold text-gray-900 text-lg mt-1 leading-snug">{card.title}</h3>
+                  <p className="text-sm text-gray-600 mt-2 leading-relaxed">{card.desc}</p>
+                </div>
+              </div>
+              <Link to={card.to} className="btn-primary mt-5">
+                {card.cta}
+              </Link>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="px-5 py-6 lg:px-8">
         <h2 className="text-lg font-bold text-gray-900 mb-4">Comment ça marche ?</h2>
         <div className="grid gap-3 md:grid-cols-3">
           {steps.map(s => (
@@ -81,9 +152,29 @@ export default function Landing() {
             </div>
           ))}
         </div>
-        <Link to="/scan" className="btn-primary mt-4 text-center md:w-auto">
-          Essayer maintenant →
-        </Link>
+        <div className="flex flex-col sm:flex-row gap-3 mt-4">
+          <Link to="/scan" className="btn-primary text-center md:w-auto">
+            Essayer maintenant →
+          </Link>
+          <Link to="/historique" className="btn-secondary text-center md:w-auto">
+            Voir mes scans
+          </Link>
+        </div>
+      </section>
+
+      <section className="px-5 py-6 lg:px-8 bg-white">
+        <h2 className="text-lg font-bold text-gray-900 mb-1">Ce qui différencie FishTrace</h2>
+        <p className="text-sm text-gray-500 mb-4">
+          Poiscaille rend le circuit court accessible via un casier. FishTrace se positionne avant et après l’achat : diagnostic, preuve et redirection vers l’artisan.
+        </p>
+        <div className="grid gap-3 lg:grid-cols-3">
+          {differentiators.map(item => (
+            <div key={item.title} className="card">
+              <div className="font-semibold text-sm" style={{ color: '#0F6E56' }}>{item.title}</div>
+              <p className="text-sm text-gray-600 mt-2 leading-relaxed">{item.desc}</p>
+            </div>
+          ))}
+        </div>
       </section>
 
       <section className="px-5 py-6 lg:px-8" style={{backgroundColor:'#0F6E56'}}>
@@ -136,12 +227,15 @@ export default function Landing() {
             <Link to="/pecheur/marco-ferreira" className="text-xs font-semibold mt-3 block" style={{color:'#1D9E75'}}>
               Voir son profil →
             </Link>
+            <Link to="/artisan" className="text-xs font-semibold mt-2 block" style={{color:'#0F6E56'}}>
+              Ouvrir l’espace artisan →
+            </Link>
           </div>
 
           <div className="rounded-2xl p-5 text-center" style={{backgroundColor:'#085041'}}>
             <div className="text-2xl mb-2">🐟</div>
-            <h3 className="font-bold text-white text-base mb-1">Accédez aux alternatives durables</h3>
-            <p className="text-xs mb-4" style={{color:'#9FE1CB'}}>4€/mois · Sans engagement · Annulation à tout moment</p>
+            <h3 className="font-bold text-white text-base mb-1">Besoin d'aller plus loin ?</h3>
+            <p className="text-xs mb-4" style={{color:'#9FE1CB'}}>Le scan est gratuit. Les offres servent à débloquer plus d'alternatives, l'historique complet et le plan Pro.</p>
             <div className="flex flex-col sm:flex-row lg:flex-col gap-3">
               <Link to="/abonnement" className="inline-block bg-white font-semibold text-sm px-6 py-2.5 rounded-xl transition-colors hover:bg-gray-100 sm:w-auto" style={{color:'#0F6E56'}}>
                 Voir les offres →

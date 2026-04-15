@@ -15,7 +15,7 @@ export const DEMO_STEPS = [
     step: 1,
     title: 'Situation initiale',
     shortTitle: 'Rayon poisson',
-    description: "Vendredi soir, Théo est face au rayon poisson. Il voit des labels partout et ne sait pas lesquels croire.",
+    description: "Théo est face au rayon poisson. Il voit des labels partout et ne sait pas lesquels croire.",
     quote: "Encore ces labels... je comprends rien à tout ça.",
   },
   {
@@ -43,14 +43,14 @@ export const DEMO_STEPS = [
     step: 5,
     title: 'Alternatives',
     shortTitle: 'Choix durable',
-    description: "L'app propose trois alternatives durables à moins de 5 km, dont le maquereau de Marco Ferreira.",
+    description: "L'app propose trois alternatives durables à moins de 5 km, dont le maquereau de ligne de Marco Ferreira.",
     quote: "Pêché par Marco Ferreira, Douarnenez — Score A !",
   },
   {
     step: 6,
     title: 'Conséquence',
     shortTitle: 'Abonnement',
-    description: "Théo choisit le maquereau, repart rassuré, puis s'abonne au plan freemium le soir même.",
+    description: "Théo choisit le maquereau, repart rassuré, puis s'abonne au plan Premium pour accéder aux filtres et à l'historique.",
     quote: "Enfin une app qui m'aide vraiment à choisir. Je m'abonne !",
   },
 ]

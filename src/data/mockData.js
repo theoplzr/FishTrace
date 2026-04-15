@@ -187,8 +187,8 @@ export const PLANS = [
     cta:"Commencer gratuitement",
   },
   {
-    id:'freemium', name:'Freemium', price:4, billing:'/mois',
-    badge:'Recommandé', recommended:true,
+    id:'freemium', name:'Premium', price:4, billing:'/mois',
+    badge:'Pour consommateurs', recommended:true,
     features:[
       { text:'Scan code-barre illimité',      ok:true },
       { text:'Score durabilité A→F',          ok:true },
@@ -202,19 +202,19 @@ export const PLANS = [
     cta:"S'abonner pour 4€/mois",
   },
   {
-    id:'pro', name:'Pro', price:49, billing:'/mois',
-    badge:'Restaurateurs', recommended:false,
+    id:'pro', name:'Pro Artisan', price:10, billing:'/mois',
+    badge:'Pour artisans', recommended:false,
     features:[
-      { text:'Tout le plan Freemium',         ok:true },
+      { text:'Tout le plan Premium',          ok:true },
       { text:'QR code « pêché par X »',       ok:true },
-      { text:'Dashboard traçabilité',         ok:true },
-      { text:'Audit fournisseurs',            ok:true },
-      { text:'Badge « Restaurant engagé »',   ok:true },
+      { text:'Profil artisan certifié',       ok:true },
+      { text:'Demandes directes clients',     ok:true },
+      { text:'Lots du jour et disponibilité', ok:true },
       { text:'Support prioritaire',           ok:true },
       { text:'Rapport mensuel impact',        ok:true },
-      { text:'API données IFREMER',           ok:true },
+      { text:'Preuve menu, étal ou rayon',    ok:true },
     ],
-    cta:"Contacter l'équipe",
+    cta:"Passer au Pro Artisan",
   },
 ]
 

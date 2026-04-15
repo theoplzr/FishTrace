@@ -69,7 +69,7 @@ export default function Historique() {
         <div className="card" style={{ backgroundColor: '#085041' }}>
           <div className="text-center">
             <div className="text-2xl mb-2">🔒</div>
-            <h2 className="font-bold text-white text-sm">Historique complet réservé au Freemium</h2>
+            <h2 className="font-bold text-white text-sm">Historique complet réservé au Premium</h2>
             <p className="text-xs mt-2 leading-relaxed" style={{ color: '#9FE1CB' }}>
               {lockedCount} scan{lockedCount > 1 ? 's' : ''} supplémentaire{lockedCount > 1 ? 's' : ''} sont bien enregistrés en local, mais masqués en plan gratuit.
             </p>

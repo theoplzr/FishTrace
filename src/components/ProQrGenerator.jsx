@@ -100,12 +100,12 @@ export default function ProQrGenerator({
       {locked && (
         <div className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-3 rounded-2xl text-center px-6" style={{ backgroundColor: 'rgba(255,255,255,0.92)', backdropFilter: 'blur(4px)' }}>
           <div className="text-3xl">🔒</div>
-          <div className="font-semibold text-sm text-gray-900">QR traçabilité réservé au plan Pro</div>
+          <div className="font-semibold text-sm text-gray-900">QR traçabilité réservé au plan Pro Artisan</div>
           <p className="text-xs text-gray-500 leading-relaxed">
             Générez un visuel "pêché par {fishermanName}" pour carte, menu ou étal.
           </p>
           <button onClick={onUnlock} className="btn-primary max-w-xs">
-            Débloquer le plan Pro
+            Débloquer Pro Artisan
           </button>
         </div>
       )}

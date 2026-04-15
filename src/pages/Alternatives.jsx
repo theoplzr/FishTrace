@@ -68,7 +68,7 @@ export default function Alternatives() {
           <div className="flex items-center justify-between gap-3">
             <div>
               <div className="text-xs font-semibold uppercase tracking-[0.16em]" style={{ color: '#1D9E75' }}>
-                Démo Théo · Étape 5/6
+                Exemple guidé · Étape 5/6
               </div>
               <div className="font-bold text-gray-900 mt-1">{demoStepData.shortTitle}</div>
             </div>
@@ -117,7 +117,7 @@ export default function Alternatives() {
 
       {showFilterUpsell && (
         <div className="rounded-2xl px-4 py-3 text-sm" style={{ backgroundColor: '#FAEEDA', color: '#633806' }}>
-          Le filtre par espèce est maintenant branché, mais réservé au plan Freemium.
+          Le filtre par espèce est maintenant branché, mais réservé au plan Premium.
         </div>
       )}
 
@@ -136,7 +136,7 @@ export default function Alternatives() {
               <div key={alternative.product_id} className={`card relative ${isLocked ? 'overflow-hidden' : ''}`} style={isDemoChoice ? { border: '2px solid #1D9E75' } : {}}>
                 {isDemoChoice && (
                   <span className="absolute -top-3 left-4 text-[11px] font-bold px-3 py-1 rounded-full text-white" style={{ backgroundColor: '#1D9E75' }}>
-                    Choix de Théo
+                    Alternative recommandée
                   </span>
                 )}
 

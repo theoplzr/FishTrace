@@ -52,7 +52,7 @@ export default function Resultat() {
           <div className="flex items-center justify-between gap-3">
             <div>
               <div className="text-xs font-semibold uppercase tracking-[0.16em]" style={{ color: '#1D9E75' }}>
-                Démo Théo · Étape 4/6
+                Exemple guidé · Étape 4/6
               </div>
               <div className="font-bold text-gray-900 mt-1">{demoStepData.shortTitle}</div>
             </div>

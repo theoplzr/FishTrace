@@ -28,15 +28,15 @@ const PILLARS = [
 const OUTCOMES = [
   {
     title: 'Pour les consommateurs',
-    description: 'Comprendre instantanément l’origine réelle, la méthode de pêche et le niveau de greenwashing.',
+    description: 'Comprendre instantanément l’origine réelle, la méthode de pêche et le niveau de greenwashing avant d’acheter.',
   },
   {
-    title: 'Pour les pêcheurs',
-    description: 'Retrouver de la marge, de la visibilité et une relation directe avec les acheteurs.',
+    title: 'Pour les artisans',
+    description: 'Retrouver de la marge, de la visibilité et une relation directe avec les acheteurs grâce à une preuve traçable.',
   },
   {
-    title: 'Pour les restaurants',
-    description: 'Prouver la traçabilité en salle grâce à un QR MaréeForce relié à l’artisan.',
+    title: 'Face aux concurrents',
+    description: 'Compléter les paniers type Poiscaille par un outil de scan, de score et de redirection au moment du doute.',
   },
 ]
 
@@ -51,7 +51,7 @@ export default function Mission() {
           Rendre la pêche durable lisible, désirable et économiquement viable.
         </h1>
         <p className="text-sm text-gray-600 mt-3 leading-relaxed">
-          MaréeForce ne se contente pas de dénoncer la pêche industrielle. Le projet relie plaidoyer, circuit court et preuve produit pour créer un changement concret côté rayon, côté pêcheur et côté restaurant.
+          MaréeForce ne se contente pas de dénoncer la pêche industrielle. L’application relie plaidoyer, circuit court et preuve produit pour créer un changement concret côté consommateur et côté artisan pêcheur.
         </p>
       </section>
 
@@ -70,8 +70,8 @@ export default function Mission() {
       </section>
 
       <ImpactDashboard
-        title="Dashboard d'impact"
-        subtitle="Des compteurs animés pour matérialiser le potentiel de FishTrace et MaréeForce"
+        title="Impact MaréeForce"
+        subtitle="Des indicateurs pour suivre les scans, les artisans soutenus et les choix responsables"
       />
 
       <section className="card">
@@ -94,6 +94,9 @@ export default function Mission() {
         </p>
         <div className="flex flex-col sm:flex-row gap-3 mt-5">
           <Link to="/scan" className="btn-primary sm:w-auto">Lancer un scan</Link>
+          <Link to="/artisan" className="btn-secondary bg-white/5 border-white/20 text-white hover:bg-white/10 sm:w-auto">
+            Ouvrir l’espace artisan
+          </Link>
           <Link to="/abonnement" className="btn-secondary bg-white/5 border-white/20 text-white hover:bg-white/10 sm:w-auto">
             Voir les plans
           </Link>

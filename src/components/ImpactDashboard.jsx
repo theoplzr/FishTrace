@@ -67,7 +67,7 @@ function AnimatedMetric({ value, label, icon, suffix = '' }) {
 
 export default function ImpactDashboard({
   title = 'Impact collectif',
-  subtitle = 'Une démonstration vivante du modèle MaréeForce',
+  subtitle = 'Des indicateurs clairs pour suivre l’effet du circuit court',
   stats = DEFAULT_STATS,
 }) {
   return (
